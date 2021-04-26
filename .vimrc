@@ -1,0 +1,169 @@
+" Vim-Plug Packages
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/vim-plug')
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
+Plug 'godlygeek/tabular'
+Plug 'gruvbox-community/gruvbox'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'qpkorr/vim-bufkill'
+Plug 'sainnhe/sonokai'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'Yggdroot/indentLine'
+call plug#end()
+
+" General
+filetype plugin on
+filetype indent on
+set autoread
+set so=10
+set wildmenu
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+set ignorecase
+set hlsearch
+set incsearch
+set cindent
+set showmatch
+set mat=2
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+set nobackup
+set nowb
+set noswapfile
+set encoding=utf-8
+set noshowmode
+set foldmethod=syntax
+set nofoldenable
+let g:SimpylFold_docstring_preview=0
+let g:SimpylFold_fold_docstring=0
+let b:SimpylFold_fold_docstring=0
+let g:SimpylFold_fold_import=0
+let b:SimpylFold_fold_import=0
+function! NeatFoldText()
+    let suba = getline(v:foldstart)
+    let foldmarkerpat = join(map(split(&l:foldmarker,','), "v:val.'\\d\\='"), '\|')
+    let suba = substitute(suba, foldmarkerpat, '', 'g')
+    let suba = substitute(suba, '\s*$', '', '')
+    let lines = v:foldend - v:foldstart + 1
+    let text = suba
+    let fillchar = matchstr(&fillchars, 'fold:\zs.')
+    if strlen(fillchar) == 0
+        let fillchar = '-'
+    endif
+    let lines = repeat(fillchar, 4).' ' . lines . ' lines '.repeat(fillchar, 3)
+    if has('float')
+        let nuw = max([float2nr(log10(line('$')))+3, &numberwidth])
+    else
+        let nuw = &numberwidth
+    endif
+    let n = winwidth(winnr()) - &foldcolumn - nuw - strlen(lines)
+    let text = text[:min([strlen(text), n])]
+    if text[-1:] != ' '
+        if strlen(text) < n
+            let text .= ' '
+        else
+            let text = substitute(text, '\s*.$', '', '')
+        endif
+    endif
+    let text .= repeat(fillchar, n - strlen(text))
+    let text .= lines
+    return text
+endfunction
+set foldtext=NeatFoldText()
+
+" Interface
+syntax on
+set mouse=a
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode
+if has("clipboard")
+  set clipboard=unnamed
+  if has("unnamedplus")
+    set clipboard+=unnamedplus
+  endif
+endif
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+augroup END
+set cursorline
+set background=dark
+set laststatus=2
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+let g:indentLine_char='|'
+let g:ycm_show_diagnostics_ui=0
+let g:tmuxline_powerline_separators=0
+
+" Colorscheme and Theme
+let g:python_highlight_all=1
+let g:gruvbox_contrast_dark='hard'
+let g:vim_monokai_tasty_italic=1
+let g:sonokai_style = 'shusia'
+let g:sonokai_enable_italic=1
+let g:sonokai_disable_italic_comment=1
+let g:airline_powerline_fonts=0
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#syntastic#enabled=1
+let g:airline_theme='sonokai'
+colorscheme sonokai
+
+" Indentation
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set ai
+set si
+set wrap
+
+" Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Remove highlight after search with two enters
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
+
+" Split Screen Navigation
+set splitright
+set splitbelow
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Buffer Navigation
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+nnoremap <leader>x :bp<CR>:bd #<CR>
+
+" NERDTree Config
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
