@@ -96,14 +96,14 @@ let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[4 q" "SR = REPLACE mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode
 if has("autocmd")
-  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' |
   au InsertEnter,InsertChange *
     \ if v:insertmode == 'i' |
-    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \   silent execute '!echo -ne "\e[5 q"' |
     \ elseif v:insertmode == 'r' |
-    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-    \ endif
-  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+    \   silent execute '!echo -ne "\e[3 q"' |
+    \ endif |
+  au VimLeave * silent execute '!echo -ne "\e[ q"' |
 endif
 if has("clipboard")
   set clipboard=unnamed
