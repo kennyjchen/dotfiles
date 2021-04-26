@@ -23,6 +23,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -114,15 +115,13 @@ if has('termguicolors')
   set termguicolors
 endif
 
+let g:python_highlight_all=1
 let g:indentLine_char='|'
 let g:ycm_show_diagnostics_ui=0
 let g:tmuxline_powerline_separators=0
 
 " Colorscheme and Theme
-let g:python_highlight_all=1
-let g:gruvbox_contrast_dark='hard'
-let g:vim_monokai_tasty_italic=1
-let g:sonokai_style = 'shusia'
+let g:sonokai_style = 'default'
 let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
 let g:airline_powerline_fonts=0
