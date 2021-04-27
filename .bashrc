@@ -1,3 +1,5 @@
+source ~/.bashrc_default
+
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
