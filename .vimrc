@@ -14,6 +14,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lifepillar/vim-mucomplete'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
 Plug 'sainnhe/sonokai'
@@ -25,7 +26,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -171,6 +171,12 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" MUcomplete
+let g:mucomplete#enable_auto_at_startup = 1
+set completeopt+=noselect
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
 
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
