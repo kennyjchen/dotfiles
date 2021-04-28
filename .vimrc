@@ -139,6 +139,9 @@ let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
 let g:airline_powerline_fonts=0
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#syntastic#enabled=1
 let g:airline_theme='sonokai'
 colorscheme sonokai
