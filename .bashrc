@@ -1,5 +1,7 @@
 source ~/.bashrc_default
 
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
