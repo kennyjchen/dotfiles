@@ -14,6 +14,12 @@ cd ./ctags
 make
 make install
 
+# virtualenv
+pip3 install virtualenv 
+
+# virtualenvwrapper
+pip3 install virtualenvwrapper
+
 # pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 cd ~/.pyenv && src/configure && make -C src
