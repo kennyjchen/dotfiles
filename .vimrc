@@ -33,6 +33,7 @@ call plug#end()
 filetype plugin on
 filetype indent on
 set autoread
+au CursorHold,CursorHoldI * checktime
 set so=10
 set wildmenu
 set backspace=eol,start,indent
