@@ -38,6 +38,7 @@ set wildmenu
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set ignorecase
+set smartcase
 set hlsearch
 set incsearch
 set cindent
@@ -151,6 +152,7 @@ colorscheme sonokai
 
 " Indentation
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
 set smarttab
