@@ -137,6 +137,8 @@ let g:ycm_show_diagnostics_ui=0
 let g:tmuxline_powerline_separators=0
 autocmd VimEnter * redraw!
 
+autocmd BufNewFile,BufRead *.launch set syntax=xml
+
 " Colorscheme and Theme
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic=1
