@@ -2,6 +2,12 @@ source ~/.bashrc_default
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# disable Ctrl-s
+if [[ -t 0 && $- = *i* ]]
+then
+    stty -ixon
+fi 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/kjchen/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -19,6 +25,7 @@ unset __conda_setup
 
 # ROS Noetic
 source /opt/ros/noetic/setup.bash
+source /home/kjchen/Research/JPL/dlio/devel/setup.bash
 
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
