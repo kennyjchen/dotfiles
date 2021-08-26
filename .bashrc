@@ -25,7 +25,6 @@ unset __conda_setup
 
 # ROS Noetic
 source /opt/ros/noetic/setup.bash
-source /home/kjchen/Research/JPL/dlio/devel/setup.bash
 
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
