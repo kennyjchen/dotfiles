@@ -12,7 +12,7 @@ Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'lifepillar/vim-mucomplete'
+"Plug 'lifepillar/vim-mucomplete'
 Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
