@@ -12,8 +12,8 @@ Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'lifepillar/vim-mucomplete'
 Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
+Plug 'plasticboy/vim-markdown'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
 Plug 'sainnhe/sonokai'
@@ -54,6 +54,8 @@ set encoding=utf-8
 set noshowmode
 set foldmethod=syntax
 set nofoldenable
+set conceallevel=0
+
 let g:SimpylFold_docstring_preview=0
 let g:SimpylFold_fold_docstring=0
 let b:SimpylFold_fold_docstring=0
@@ -138,7 +140,7 @@ autocmd VimEnter * redraw!
 
 autocmd BufNewFile,BufRead *.launch set syntax=xml
 
-" Colorscheme and Theme
+" Color Scheme and Theme
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
