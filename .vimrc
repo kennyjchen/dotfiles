@@ -13,6 +13,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
+Plug 'maralla/completor.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
@@ -33,6 +34,7 @@ filetype plugin on
 filetype indent on
 set autoread
 set so=10
+set wildmode=longest:full,full
 set wildmenu
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -55,6 +57,8 @@ set noshowmode
 set foldmethod=syntax
 set nofoldenable
 set conceallevel=0
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
 
 let g:SimpylFold_docstring_preview=0
 let g:SimpylFold_fold_docstring=0
@@ -165,6 +169,30 @@ set ai
 set si
 set wrap
 
+" Completor
+function! Tab_Or_Complete() abort
+  " If completor is already open the `tab` cycles through suggested completions.
+  if pumvisible()
+    return "\<C-N>"
+  " If completor is not open and we are in the middle of typing a word then
+  " `tab` opens completor menu.
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    " If we aren't typing a word and we press `tab` simply do the normal `tab`
+    " action.
+    return "\<Tab>"
+  endif
+endfunction
+
+" Use `tab` key to select completions.  Default is arrow keys.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use tab to trigger auto completion.  Default suggests completions as you type.
+let g:completor_auto_trigger=0
+inoremap <expr> <Tab> Tab_Or_Complete()
+
 " Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
@@ -178,12 +206,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" MuComplete
-set completeopt+=menuone,noinsert,noselect
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg " If Vim beeps during completion
-let g:mucomplete#enable_auto_at_startup = 1
 
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
