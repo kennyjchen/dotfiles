@@ -199,6 +199,9 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " Remove highlight after search with two enters
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 
+" Remove Ex mode via Shift-Q
+nnoremap Q <Nop>
+
 " Split Screen Navigation
 set splitright
 set splitbelow
