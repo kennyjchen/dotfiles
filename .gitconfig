@@ -1,0 +1,6 @@
+[user]
+	email = kennyjchen@ucla.edu
+	name = Kenny Chen
+
+[alias]
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
