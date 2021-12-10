@@ -1,6 +1,8 @@
 [user]
-	email = kennyjchen@ucla.edu
 	name = Kenny Chen
-
+	email = kennyjchen@ucla.edu
+	username = kennyjchen
+[core]
+	editor = vim
 [alias]
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
