@@ -6,6 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/vim-plug')
+Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
@@ -168,6 +169,9 @@ set smarttab
 set ai
 set si
 set wrap
+
+"Gitgutter always show sign column
+set signcolumn=yes
 
 " Completor
 function! Tab_Or_Complete() abort
