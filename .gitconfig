@@ -6,4 +6,3 @@
 	editor = vim
 [alias]
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
-	tracked = ls-tree -r main --name-only
