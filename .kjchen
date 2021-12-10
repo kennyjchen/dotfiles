@@ -1,5 +1,11 @@
+#!/bin/sh
+
+# Set up dotfiles
 git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
+
+# Aptitude
+sudo apt install -y vim tmux git curl fonts-firacode python3-pip
 
 # Install ThirdParty Software
 mkdir ~/Software/
@@ -29,3 +35,4 @@ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/py
 
 # pyenv-virtualenvwrapper
 git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+
