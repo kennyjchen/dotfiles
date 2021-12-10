@@ -3,7 +3,6 @@
 
 # Include dotfiles
 !.bashrc
-!.bashrc_default
 !.gitconfig
 !.kjchen
 !.tmux.conf
