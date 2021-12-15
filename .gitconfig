@@ -5,24 +5,25 @@
 [core]
 	editor = vim
 [alias]
-    # Shortening aliases
-    co = checkout
-    cob = checkout -b
-    f = fetch -p
-    c = commit
-    p = push
-    ba = branch -a
-    bd = branch -d
-    dc = diff --cached
+	# Shortening aliases
+	co = checkout
+	cob = checkout -b
+	f = fetch -p
+	c = commit
+	p = push
+	ba = branch -a
+	bd = branch -d
+	dc = diff --cached
 
-    # Feature improving aliases
-    st = status -sb
-    a = add -p
-    rank = shortlog -sn --no-merges
+	# Feature improving aliases
+	st = status -sb
+	a = add -p
+	rank = shortlog -sn --no-merges
+	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
-    # Log
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    
-    # Cleanup aliases
+	# Log
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+	# Cleanup aliases
 	archivebranch = !git checkout $1 && git switch develop && git tag archive/$1 $1 && git branch -D $1 && git push -d origin $1 && git push --tags && :
 	restorebranch = !git checkout -b $1 archive/$1 && :
