@@ -8,16 +8,19 @@
 	# Shortening aliases
 	co = checkout
 	cob = checkout -b
+	a = add
 	f = fetch -p
+	pl = pull
 	c = commit
-	p = push
+	ps = push
 	ba = branch -a
 	bd = branch -d
 	dc = diff --cached
 
 	# Feature improving aliases
 	st = status -sb
-	a = add -p
+	ap = add -p
+	aa = add --all
 	rank = shortlog -sn --no-merges
 	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
