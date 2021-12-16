@@ -30,6 +30,7 @@
 	st = status -sb
 	ap = add -p
 	aa = add --all
+	acp = !git add --all && git commit -m "$1" && git push && :
 	rank = shortlog -sn --no-merges
 	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
