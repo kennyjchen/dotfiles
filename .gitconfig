@@ -2,8 +2,14 @@
 	name = Kenny Chen
 	email = kennyjchen@ucla.edu
 	username = kennyjchen
+	signingKey = 89D26BECC9B44BEE
 [core]
 	editor = vim
+	excludesFile = ~/.gitignore_global
+[commit]
+	gpgSign = true
+[color]
+	ui = auto
 [alias]
 	# Shortening aliases
 	co = checkout
