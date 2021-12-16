@@ -12,9 +12,12 @@
 	ui = auto
 [alias]
 	# Shortening aliases
+	st = status -sb
 	co = checkout
 	cob = checkout -b
 	a = add
+	ap = add -p
+	aa = add --all
 	f = fetch
 	fp = fetch -p
 	pl = pull
@@ -27,9 +30,6 @@
 	dc = diff --cached
 
 	# Feature improving aliases
-	st = status -sb
-	ap = add -p
-	aa = add --all
 	acp = !git add --all && git commit -m "$1" && git push && :
 	rank = shortlog -sn --no-merges
 	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
