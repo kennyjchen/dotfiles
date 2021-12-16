@@ -15,13 +15,15 @@
 	co = checkout
 	cob = checkout -b
 	a = add
-	f = fetch -p
+	f = fetch
+	fp = fetch -p
 	pl = pull
 	c = commit
 	cm = commit -m
 	ps = push
 	ba = branch -a
 	bd = branch -d
+	d = diff
 	dc = diff --cached
 
 	# Feature improving aliases
