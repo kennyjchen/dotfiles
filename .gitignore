@@ -4,6 +4,7 @@
 # Include dotfiles
 !.bashrc
 !.gitconfig
+!.gitignore
 !.gitignore_global
 !.kjchen
 !.tmux.conf
