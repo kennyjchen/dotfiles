@@ -18,6 +18,7 @@
 	f = fetch -p
 	pl = pull
 	c = commit
+	cm = commit -m
 	ps = push
 	ba = branch -a
 	bd = branch -d
