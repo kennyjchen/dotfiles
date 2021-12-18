@@ -28,6 +28,7 @@
 	bd = branch -d
 	d = diff
 	dc = diff --cached
+	rh = reset --hard
 
 	# Feature improving aliases
 	acp = !git add --all && git commit -m \"$1\" && git push && :
