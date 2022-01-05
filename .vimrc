@@ -169,6 +169,10 @@ set smarttab
 set ai
 set si
 set wrap
+set sidescroll=1
+set breakindent
+set breakindentopt=sbr
+set showbreak=↪
 
 "Gitgutter always show sign column
 set signcolumn=yes
