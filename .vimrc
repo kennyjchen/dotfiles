@@ -173,7 +173,7 @@ set sidescroll=1
 set sidescrolloff=50
 set breakindent
 set breakindentopt=sbr
-let &showbreak = '↪> '
+let &showbreak = '↪   '
 
 "Gitgutter always show sign column
 set signcolumn=yes
