@@ -12,23 +12,25 @@
 	ui = auto
 [alias]
 	# Shortening aliases
-	st = status -sb
+	a = add
+	aa = add --all
+	ap = add -p
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	c = commit
+	cm = commit -m
 	co = checkout
 	cob = checkout -b
-	a = add
-	ap = add -p
-	aa = add --all
+	d = diff
+	dc = diff --cached
 	f = fetch
 	fp = fetch -p
 	pl = pull
-	c = commit
-	cm = commit -m
 	ps = push
-	ba = branch -a
-	bd = branch -d
-	d = diff
-	dc = diff --cached
 	rh = reset --hard
+	st = status -sb
+	sw = switch
 
 	# Feature improving aliases
 	acp = !git add --all && git commit -m \"$1\" && git push && :
