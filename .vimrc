@@ -220,7 +220,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Tagbar
-nmap <C-b> :TagbarToggle<CR>
+nmap <C-m> :TagbarToggle<CR>
 let g:tagbar_sort=0
 
 " Buffer Navigation
