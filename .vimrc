@@ -7,6 +7,7 @@ endif
 
 call plug#begin('~/.vim/vim-plug')
 Plug 'airblade/vim-gitgutter'
+Plug 'bfrg/vim-cpp-modern'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
@@ -175,7 +176,7 @@ set breakindent
 set breakindentopt=sbr
 let &showbreak = '↪>  '
 
-"Gitgutter always show sign column
+" Gitgutter always show sign column
 set signcolumn=yes
 
 " Completor
@@ -227,6 +228,11 @@ let g:tagbar_sort=0
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 nnoremap <leader>x :bp<CR>:bd #<CR>
+
+" C++ Highlighting
+let g:cpp_attributes_highlight=1
+let g:cpp_member_highlight=1
+let g:cpp_simple_highlight=1
 
 " NERDTree Config
 map <C-n> :NERDTreeToggle<CR>
