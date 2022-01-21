@@ -6,6 +6,8 @@ git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 
 # Aptitude
 sudo apt install -y vim tmux git curl fonts-firacode python3-pip autoconf
+sudo apt install -y python3-pip python3-catkin-tools autoconf
+sudo apt install -y fonts-firacode
 
 # Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
