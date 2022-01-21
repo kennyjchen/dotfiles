@@ -5,7 +5,7 @@ git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
 # Aptitude
-sudo apt install -y vim tmux git curl fonts-firacode python3-pip autoconf
+sudo apt install -y vim tmux git curl htop neofetch
 sudo apt install -y python3-pip python3-catkin-tools autoconf
 sudo apt install -y fonts-firacode
 
