@@ -4,18 +4,29 @@
 git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
-# Aptitude
+# Apt
 sudo apt install -y vim tmux git curl htop neofetch
 sudo apt install -y python3-pip python3-catkin-tools autoconf
 sudo apt install -y fonts-firacode
 
-# Tmux Plugin Manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Sublime Text
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt install apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt update
+sudo apt install -y sublime-text
+
+# VLC
+sudo apt install -y vlc
 
 # ROS
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo apt update
 sudo apt install -y ros-noetic-desktop-full
+
+# Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install ThirdParty Software
 mkdir ~/Software/
@@ -26,7 +37,7 @@ cd ~/Software/ThirdParty
 git clone https://github.com/universal-ctags/ctags.git
 cd ./ctags
 ./autogen.sh
-./configure --prefix=/home/kjchen/.local
+./configure --prefix=$HOME/.local
 make
 make install
 
