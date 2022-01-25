@@ -1,5 +1,6 @@
 # aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias sb='source ~/.bashrc'
 
 # disable Ctrl-s
 if [[ -t 0 && $- = *i* ]]

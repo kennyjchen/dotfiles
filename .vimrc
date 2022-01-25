@@ -12,16 +12,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'LunarWatcher/auto-pairs', { 'tag': '*' }
+Plug 'LunarWatcher/auto-pairs'
 Plug 'maralla/completor.vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
 Plug 'sainnhe/sonokai'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tmhedberg/SimpylFold'
@@ -219,6 +218,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" FZF disable :W
+command! -nargs=* W w
 
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
