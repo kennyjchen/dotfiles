@@ -1,7 +1,7 @@
 " Vim-Plug Packages
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -12,6 +12,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'maralla/completor.vim'
@@ -146,7 +147,6 @@ let g:vim_markdown_conceal_code_blocks=0
 autocmd VimEnter * redraw!
 autocmd BufNewFile,BufRead *.launch set syntax=xml
 
-
 " Color Scheme and Theme
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic=1
@@ -199,7 +199,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use tab to trigger auto completion.  Default suggests completions as you type.
-let g:completor_auto_trigger=0
+let g:completor_auto_trigger=1
 inoremap <expr> <Tab> Tab_Or_Complete()
 
 " Remove all trailing whitespace by pressing F5
