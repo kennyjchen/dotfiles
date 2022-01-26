@@ -12,6 +12,11 @@ sudo apt install -y fonts-firacode
 # Neovim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 
+# NodeJS
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
 # Tmux Plugin Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
