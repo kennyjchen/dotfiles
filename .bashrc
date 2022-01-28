@@ -4,6 +4,7 @@ PROMPT_DIRTRIM=1
 # aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sb='source ~/.bashrc'
+alias cb='catkin build'
 
 # disable Ctrl-s
 if [[ -t 0 && $- = *i* ]]
