@@ -5,9 +5,12 @@ git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
 # Apt
-sudo apt install -y vim tmux git curl npm htop neofetch
+sudo apt install -y vim nvim tmux git curl npm htop neofetch
 sudo apt install -y python3-pip python3-catkin-tools autoconf
 sudo apt install -y fonts-firacode
+
+# Neovim
+ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 
 # NodeJS
 sudo npm cache clean -f
