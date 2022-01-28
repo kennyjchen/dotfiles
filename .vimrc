@@ -44,6 +44,7 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
+set inccommand=nosplit
 set cindent
 set showmatch
 set mat=2
