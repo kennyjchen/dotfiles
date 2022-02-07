@@ -4,7 +4,7 @@
 	username = kennyjchen
 	signingKey = 89D26BECC9B44BEE
 [core]
-	editor = vim
+	editor = nvim
 	excludesFile = ~/.gitignore_global
 [commit]
 	gpgSign = true
