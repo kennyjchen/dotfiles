@@ -3,6 +3,7 @@
 
 # Include dotfiles
 !.bashrc
+!.bashrc_default
 !.gitconfig
 !.gitignore
 !.gitignore_global
