@@ -169,7 +169,7 @@ set expandtab
 set smarttab
 set ai
 set si
-set nowrap
+set wrap
 set colorcolumn=120
 set sidescroll=1
 set sidescrolloff=50
