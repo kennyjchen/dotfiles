@@ -7,17 +7,23 @@ set -o vi
 # shorten path
 PROMPT_DIRTRIM=1
 
-# aliases
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias sb='source ~/.bashrc'
-alias cb='catkin build'
-alias vim='nvim'
-
 # disable Ctrl-s
 if [[ -t 0 && $- = *i* ]]
 then
     stty -ixon
 fi 
+
+# bash aliases
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias sb='source ~/.bashrc'
+alias vim='nvim'
+
+# ros aliases
+alias cc='catkin clean'
+alias cb='catkin build --this'
+alias cba='catkin build'
+alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
+alias em='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads'
 
 # ROS workspaces
 source /opt/ros/noetic/setup.bash
