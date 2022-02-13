@@ -6,9 +6,12 @@ git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 
 # Apt
 sudo apt install -y vim neovim tmux git curl npm htop neofetch ffmpeg
-sudo apt install -y bashtop ranger
+sudo apt install -y ranger
 sudo apt install -y python3-pip python3-catkin-tools autoconf
 sudo apt install -y fonts-firacode
+
+# Snap
+sudo snap install btop
 
 # Neovim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
