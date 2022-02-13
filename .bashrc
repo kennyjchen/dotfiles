@@ -1,6 +1,9 @@
 # default bashrc
 source ~/.bashrc_default
 
+# vim bindings
+set -o vi
+
 # shorten path
 PROMPT_DIRTRIM=1
 
