@@ -141,7 +141,6 @@ endif
 
 let g:python_highlight_all=1
 let g:indentLine_char='|'
-let g:ycm_show_diagnostics_ui=0
 let g:tmuxline_powerline_separators=0
 let g:vim_markdown_conceal=0
 let g:vim_markdown_conceal_code_blocks=0
