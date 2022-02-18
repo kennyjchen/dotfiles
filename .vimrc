@@ -20,6 +20,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
+Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/sonokai'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tmhedberg/SimpylFold'
@@ -140,7 +141,7 @@ endif
 
 let g:python_highlight_all=1
 let g:indentLine_char='|'
-let g:tmuxline_powerline_separators=0
+let g:tmuxline_powerline_separators=1
 let g:vim_markdown_conceal=0
 let g:vim_markdown_conceal_code_blocks=0
 autocmd VimEnter * redraw!
@@ -150,7 +151,7 @@ autocmd BufNewFile,BufRead *.launch set syntax=xml
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
