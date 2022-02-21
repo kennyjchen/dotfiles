@@ -25,6 +25,14 @@ alias cba='catkin build'
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
 alias em='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads'
 
+rbp() {
+  if [[ "$1" == "dlio" ]]; then
+    rosbag play "$2" /aquila1/os_cloud_node/points:=/robot/lidar /aquila1/mpu6050/imu:=/robot/imu
+  elif [[ "$1" == "liosam" ]]; then
+    rosbag play "$2" /points_raw:=/robot/lidar /imu_correct:=/robot/imu
+  fi
+}
+
 # ROS workspaces
 source /opt/ros/noetic/setup.bash
 source /home/kjchen/Software/Workspaces/dlio/devel/setup.bash
