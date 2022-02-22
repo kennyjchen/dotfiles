@@ -175,6 +175,7 @@ set sidescrolloff=50
 set breakindent
 set breakindentopt=sbr
 let &showbreak = '↪>  '
+setl cino+=(0 " for function arg alignment
 
 " Gitgutter always show sign column
 set signcolumn=yes
