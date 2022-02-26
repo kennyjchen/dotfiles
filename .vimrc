@@ -177,6 +177,12 @@ set breakindentopt=sbr
 let &showbreak = '↪>  '
 setl cino+=(0 " for function arg alignment
 
+" Navigation
+nnoremap J <PageDown>
+nnoremap K <PageUp>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Gitgutter always show sign column
 set signcolumn=yes
 
