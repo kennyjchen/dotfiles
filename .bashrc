@@ -32,6 +32,8 @@ rbp() {
     rosbag play "$2" /husky2/velodyne_points:=/robot/lidar /husky2/vn100/imu_wori_wcov:=/robot/imu
   elif [[ "$1" == "liosam" ]]; then
     rosbag play "$2" /points_raw:=/robot/lidar /imu_correct:=/robot/imu
+  elif [[ "$1" == "kitti" ]]; then
+    rosbag play "$2" /kitti/velo/pointcloud:=/robot/lidar /kitti/oxts/imu:=/robot/imu
   fi
 }
 
