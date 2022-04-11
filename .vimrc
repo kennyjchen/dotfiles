@@ -62,6 +62,7 @@ set nofoldenable
 set conceallevel=0
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
+set hidden
 
 let g:SimpylFold_docstring_preview=0
 let g:SimpylFold_fold_docstring=0
