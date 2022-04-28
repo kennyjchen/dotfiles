@@ -28,10 +28,10 @@ alias em='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads
 rbp() {
   if [[ "$1" == "dlio" ]]; then
     rosbag play "$2" /aquila1/os_cloud_node/points:=/robot/lidar /aquila1/mpu6050/imu:=/robot/imu
-  elif [[ "$1" == "gp" ]]; then
-    rosbag play "$2" /husky2/velodyne_points:=/robot/lidar /husky2/vn100/imu_wori_wcov:=/robot/imu
   elif [[ "$1" == "liosam" ]]; then
     rosbag play "$2" /points_raw:=/robot/lidar /imu_correct:=/robot/imu
+  elif [[ "$1" == "newer" ]]; then
+    rosbag play "$2" /os_cloud_node/points:=/robot/lidar /alphasense_driver_ros/imu:=/robot/imu
   elif [[ "$1" == "kitti" ]]; then
     rosbag play "$2" /kitti/velo/pointcloud:=/robot/lidar /kitti/oxts/imu:=/robot/imu
   fi
