@@ -17,16 +17,18 @@ fi
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sb='source ~/.bashrc'
 alias vim='nvim'
-alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
 
 # ros aliases
 alias cc='catkin clean'
 alias cb='catkin build --this'
 alias cba='catkin build'
+
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
 alias em='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads'
-alias rosm_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
-alias rosm_localhost='export ROS_MASTER_URI=http://localhost:11311'
+
+alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
+alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
+alias rosmaster_localhost='export ROS_MASTER_URI=http://localhost:11311'
 
 rbp() {
   if [[ "$1" == "dlio" ]]; then
@@ -45,7 +47,6 @@ rbp() {
 # ROS workspaces
 source /opt/ros/noetic/setup.bash
 source /home/kjchen/Software/Workspaces/dlio/devel/setup.bash
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
