@@ -47,6 +47,7 @@ rbp() {
 # ROS workspaces
 source /opt/ros/noetic/setup.bash
 source /home/kjchen/Software/Workspaces/dlio/devel/setup.bash
+export ROS_MASTER_URI=http://localhost:11311
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
