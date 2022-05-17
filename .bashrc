@@ -25,6 +25,8 @@ alias cb='catkin build --this'
 alias cba='catkin build'
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
 alias em='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads'
+alias rosm_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
+alias rosm_localhost='export ROS_MASTER_URI=http://localhost:11311'
 
 rbp() {
   if [[ "$1" == "dlio" ]]; then
@@ -44,8 +46,6 @@ rbp() {
 source /opt/ros/noetic/setup.bash
 source /home/kjchen/Software/Workspaces/dlio/devel/setup.bash
 
-export ROS_MASTER_URI=http://192.168.2.1:11311
-export ROS_IP=192.168.1.101
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
