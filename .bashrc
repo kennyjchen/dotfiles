@@ -24,7 +24,7 @@ alias cb='catkin build --this'
 alias cba='catkin build'
 
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
-alias em='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads'
+alias exportmap='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Downloads'
 
 alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
 alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
