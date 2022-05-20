@@ -19,7 +19,8 @@ alias sb='source ~/.bashrc'
 alias vim='nvim'
 
 # ros aliases
-alias cc='catkin clean'
+alias cc='catkin clean --this'
+alias cca='catkin clean'
 alias cb='catkin build --this'
 alias cba='catkin build'
 
