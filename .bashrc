@@ -18,6 +18,10 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sb='source ~/.bashrc'
 alias vim='nvim'
 
+mkvideo() {
+  ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf 32 $3
+}
+
 # ros aliases
 alias cc='catkin clean --this'
 alias cca='catkin clean'
