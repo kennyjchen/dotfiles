@@ -33,7 +33,7 @@ alias exportmap='rosservice call /robot/dlio_map/export_map 0.01 /home/kjchen/Do
 
 alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
 alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
-alias rosmaster_localhost='export ROS_MASTER_URI=http://localhost:11311'
+alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
 
 rbp() {
   if [[ "$1" == "dlio" ]]; then
