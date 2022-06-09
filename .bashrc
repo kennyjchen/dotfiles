@@ -37,15 +37,15 @@ alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
 
 rbp() {
   if [[ "$1" == "dlio" ]]; then
-    rosbag play $2 /aquila1/os_cloud_node/points:=/robot/lidar /aquila1/mpu6050/imu:=/robot/imu
+    rosbag play $2 /aquila1/os_cloud_node/points:=/robot/lidar /aquila1/mpu6050/imu:=/robot/imu $3
   elif [[ "$1" == "liosam" ]]; then
-    rosbag play $2 /points_raw:=/robot/lidar /imu_correct:=/robot/imu
+    rosbag play $2 /points_raw:=/robot/lidar /imu_correct:=/robot/imu $3
   elif [[ "$1" == "kitti" ]]; then
-    rosbag play $2 /kitti/velo/pointcloud:=/robot/lidar /kitti/oxts/imu:=/robot/imu
+    rosbag play $2 /kitti/velo/pointcloud:=/robot/lidar /kitti/oxts/imu:=/robot/imu $3
   elif [[ "$1" == "newer2020" ]]; then
-    rosbag play $2 /os1_cloud_node/points:=/robot/lidar /os1_cloud_node/imu:=/robot/imu
+    rosbag play $2 /os1_cloud_node/points:=/robot/lidar /os1_cloud_node/imu:=/robot/imu $3
   elif [[ "$1" == "newer2021" ]]; then
-    rosbag play $2 /os_cloud_node/points:=/robot/lidar /alphasense_driver_ros/imu:=/robot/imu
+    rosbag play $2 /os_cloud_node/points:=/robot/lidar /alphasense_driver_ros/imu:=/robot/imu $3
   fi
 }
 
