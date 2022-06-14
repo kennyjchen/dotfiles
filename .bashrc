@@ -45,8 +45,10 @@ rbp() {
     rosbag play $2 /points_raw:=/robot/lidar /imu_correct:=/robot/imu $3
   elif [[ "$1" == "kitti" ]]; then
     rosbag play $2 /kitti/velo/pointcloud:=/robot/lidar /kitti/oxts/imu:=/robot/imu $3
-  elif [[ "$1" == "newer2020" ]]; then
+  elif [[ "$1" == "newer2020_ouster" ]]; then
     rosbag play $2 /os1_cloud_node/points:=/robot/lidar /os1_cloud_node/imu:=/robot/imu $3
+  elif [[ "$1" == "newer2020_rs" ]]; then
+    rosbag play $2 /os1_cloud_node/points:=/robot/lidar /camera/imu:=/robot/imu $3
   elif [[ "$1" == "newer2021" ]]; then
     rosbag play $2 /os_cloud_node/points:=/robot/lidar /alphasense_driver_ros/imu:=/robot/imu $3
   fi
