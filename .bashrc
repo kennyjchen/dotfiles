@@ -29,7 +29,7 @@ alias cb='catkin build --this'
 alias cba='catkin build'
 
 alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
-alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=193.168.1.101'
+alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
 alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
 
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
