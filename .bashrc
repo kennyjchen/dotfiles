@@ -4,6 +4,10 @@ source ~/.bashrc_default
 # vim bindings
 set -o vi
 
+# fix for ctrl-l in bash vi mode
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
 # shorten path
 PROMPT_DIRTRIM=1
 
