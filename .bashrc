@@ -38,8 +38,8 @@ alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
 
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
 
-exportmap() {
-  rosservice call /robot/dlio_map/export_map $1 /home/kjchen/Downloads
+dlio_savemap() {
+  rosservice call /robot/dlio_map/save_pcd $1 /home/kjchen/Downloads
 }
 
 rbp() {
