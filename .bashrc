@@ -11,7 +11,7 @@ bind -m vi-insert 'Control-l: clear-screen'
 # shorten path
 PROMPT_DIRTRIM=1
 
-# disable Ctrl-s
+# disable ctrl-s
 if [[ -t 0 && $- = *i* ]]
 then
     stty -ixon
@@ -19,24 +19,29 @@ fi
 
 # bash aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias sb='source ~/.bashrc'
 alias vim='nvim'
+alias sb='source ~/.bashrc'
+alias vb='vim ~/.bashrc'
 
 mkvideo() {
   ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf 32 $3
 }
 
-# ros aliases
-alias cc='catkin clean --this'
-alias cca='catkin clean'
-alias cb='catkin build --this'
-alias cba='catkin build'
+# ros stuff
+source /opt/ros/noetic/setup.bash
+source /home/kjchen/Software/Workspaces/main/devel/setup.bash
+export ROS_MASTER_URI=http://localhost:11311
 
+alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
 alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
 alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
 alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
 
-alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
+alias cc='catkin clean --this'
+alias cca='catkin clean'
+alias cb='catkin build --this'
+alias cba='catkin build'
+alias sws='source devel/setup.bash'
 
 dlio_savemap() {
   rosservice call /robot/dlio_map/save_pcd $1 /home/kjchen/Downloads
@@ -58,13 +63,7 @@ rbp() {
   fi
 }
 
-# ROS workspaces
-source /opt/ros/noetic/setup.bash
-source /home/kjchen/Software/Workspaces/dlio/devel/setup.bash
-export ROS_MASTER_URI=http://localhost:11311
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
+# miniconda
 __conda_setup="$('/home/kjchen/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -76,7 +75,6 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
