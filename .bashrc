@@ -24,7 +24,11 @@ alias sb='source ~/.bashrc'
 alias vb='vim ~/.bashrc'
 
 mkvideo() {
-  ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf 32 $3
+  ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf $3 $4
+}
+
+mkgif() {
+  ffmpeg -i $1 -filter_complex "fps=30,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" $2
 }
 
 # ros stuff
