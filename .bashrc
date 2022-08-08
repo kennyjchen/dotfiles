@@ -22,6 +22,8 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 alias sb='source ~/.bashrc'
 alias vb='vim ~/.bashrc'
+alias saup='sudo apt update'
+alias saug='sudo apt dist-upgrade'
 
 mkvideo() {
   ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf $3 $4
