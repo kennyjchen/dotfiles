@@ -22,7 +22,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 alias sb='source ~/.bashrc'
 alias vb='vim ~/.bashrc'
-alias saup='sudo apt update'
+alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 
 mkvideo() {
