@@ -24,6 +24,7 @@ alias sb='source ~/.bashrc'
 alias vb='vim ~/.bashrc'
 alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
+alias saar='sudo apt autoremove'
 
 mkvideo() {
   ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf $3 $4
