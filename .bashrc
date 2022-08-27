@@ -52,7 +52,7 @@ alias cba='catkin build'
 alias sws='source devel/setup.bash'
 
 dlio_savemap() {
-  rosservice call /robot/dlio_map/save_pcd $1 /home/kjchen/Downloads
+  rosservice call /robot/dliom_map/save_pcd $1 /home/kjchen/Downloads
 }
 
 rbp() {
