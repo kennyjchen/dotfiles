@@ -215,7 +215,7 @@ command! -nargs=* W w
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=30
+let g:tagbar_width=35
 
 " Buffer Navigation
 nnoremap <Tab> :bnext<CR>
@@ -228,7 +228,7 @@ let g:cpp_member_highlight=1
 let g:cpp_simple_highlight=1
 
 " NERDTree Config
-let g:NERDTreeWinSize=25
+let g:NERDTreeWinSize=35
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
