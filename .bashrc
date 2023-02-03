@@ -36,6 +36,10 @@ mkgif() {
   ffmpeg -i $1 -filter_complex "fps=30,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" $2
 }
 
+halfgif() {
+  ffmpeg -i $1 -vf "scale=iw/2:ih/2" $2
+}
+
 # ros stuff
 source /opt/ros/noetic/setup.bash
 source /home/kjchen/Software/Workspaces/main/devel/setup.bash
