@@ -248,3 +248,8 @@ inoremap <silent><expr> <TAB>
 \ coc#refresh()
 inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
+" Github Copilot
+" Remove tab completion and instead use Ctrl-j to accept completion
+imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
