@@ -67,8 +67,10 @@ savemap() {
 }
 
 rbp() {
-  if [[ "$1" == "dlio" ]]; then
+  if [[ "$1" == "aquila1" ]]; then
     rosbag play $2 /aquila1/os_cloud_node/points:=/robot/lidar /aquila1/mpu6050/imu:=/robot/imu $3
+  elif [[ "$1" == "aquila2" ]]; then
+    rosbag play $2 /aquila1/os_cloud_node/points:=/robot/lidar /aquila2/os_cloud_node/imu:=/robot/imu $3
   elif [[ "$1" == "liosam" ]]; then
     rosbag play $2 /points_raw:=/robot/lidar /imu_correct:=/robot/imu $3
   elif [[ "$1" == "kitti" ]]; then
