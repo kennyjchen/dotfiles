@@ -253,7 +253,8 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
-vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+command! -nargs=0 Format :call CocActionAsync('format')
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Github Copilot
 " Remove tab completion and instead use Ctrl-j to accept completion
