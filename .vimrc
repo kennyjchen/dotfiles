@@ -183,6 +183,10 @@ set breakindentopt=sbr
 let &showbreak = '↪>  '
 setl cino+=(0 " for function arg alignment
 
+autocmd Filetype json
+  \ let g:indentLine_setConceal = 0 |
+  \ let g:vim_json_syntax_conceal = 0
+
 " Navigation
 nnoremap J <PageDown>
 nnoremap K <PageUp>

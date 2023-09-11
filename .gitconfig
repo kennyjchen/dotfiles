@@ -1,13 +1,10 @@
 [user]
 	name = Kenny Chen
-	email = kennyjchen@ucla.edu
-	username = kennyjchen
-	signingKey = 89D26BECC9B44BEE
+	email = kchen@exyntechnologies.com
+	username = kchen
 [core]
 	editor = nvim
 	excludesFile = ~/.gitignore_global
-[commit]
-	gpgSign = true
 [color]
 	ui = auto
 [alias]
@@ -42,6 +39,3 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lga = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
-	# Cleanup aliases
-	archivebranch = !git checkout $1 && git switch develop && git tag archive/$1 $1 && git branch -D $1 && git push -d origin $1 && git push --tags && :
-	restorebranch = !git checkout -b $1 archive/$1 && :
