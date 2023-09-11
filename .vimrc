@@ -253,6 +253,8 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
+vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+
 " Github Copilot
 " Remove tab completion and instead use Ctrl-j to accept completion
 imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
