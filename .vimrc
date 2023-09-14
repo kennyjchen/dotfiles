@@ -8,6 +8,7 @@ call plug#begin('~/.vim/vim-plug')
 Plug 'airblade/vim-gitgutter'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
@@ -178,7 +179,7 @@ set si
 set wrap
 set colorcolumn=120
 set sidescroll=1
-set sidescrolloff=50
+set sidescrolloff=5
 set breakindent
 set breakindentopt=sbr
 let &showbreak = '↪>  '
@@ -220,7 +221,7 @@ command! -nargs=* W w
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=35
+let g:tagbar_width=40
 
 " Gutentags
 let g:gutentags_ctags_tagfile='.tags'
@@ -237,14 +238,14 @@ let g:cpp_member_highlight=1
 let g:cpp_simple_highlight=1
 
 " NERDTree Config
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=40
+let NERDTreeMouseMode=3
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " Coc.nvim
 function! s:check_back_space() abort
   let col = col('.') - 1
