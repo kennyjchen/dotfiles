@@ -222,8 +222,8 @@ nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
 let g:tagbar_width=35
 
-# Gutentags
-let g:gutentags_ctags_tagfile = '.tags'
+" Gutentags
+let g:gutentags_ctags_tagfile='.tags'
 set tags=./tags,tags;$HOME
 
 " Buffer Navigation
