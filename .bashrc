@@ -28,6 +28,9 @@ alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
 
+# cargo 
+export PATH=$PATH:~/.cargo/bin/
+
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs

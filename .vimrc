@@ -32,6 +32,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -176,7 +177,7 @@ set expandtab
 set smarttab
 set ai
 set si
-set wrap
+set nowrap
 set colorcolumn=120
 set sidescroll=1
 set sidescrolloff=5
@@ -194,6 +195,11 @@ nnoremap J <PageDown>
 nnoremap K <PageUp>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Minimap
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
 
 " Gitgutter always show sign column
 set signcolumn=yes
