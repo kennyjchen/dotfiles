@@ -14,6 +14,7 @@ Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'plasticboy/vim-markdown'
@@ -220,6 +221,10 @@ command! -nargs=* W w
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
 let g:tagbar_width=35
+
+# Gutentags
+let g:gutentags_ctags_tagfile = '.tags'
+set tags=./tags,tags;$HOME
 
 " Buffer Navigation
 nnoremap <Tab> :bnext<CR>

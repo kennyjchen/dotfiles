@@ -61,6 +61,11 @@ export EXYN_SANDBOX=1
 export EXYN_NET_LOCAL_IF_NAME=wlp0s20f3
 export EXYN_LOG_DIR=~/xfiles/
 
+# exbuild
+export EXYN_FF_EXBUILD_NINJA=1
+export EXYN_FF_EXBUILD_CCACHE=1
+export EXYN_FF_EXBUILD_MOLD=1
+
 # Added by exworkspace install script on Wed Sep  6 10:01:24 AM EDT 2023
 eval $("/home/kjchen/.exyn/exworkspace/bin/exworkspace" --shellenv)
 
