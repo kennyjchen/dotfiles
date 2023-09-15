@@ -19,6 +19,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'plasticboy/vim-markdown'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
@@ -220,7 +221,10 @@ command! -nargs=* W w
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=40
+let g:tagbar_width=50
+let g:tagbar_singleclick=1
+let g:tagbar_wrap=1
+let g:tagbar_ignore_anonymous = 1
 
 " Gutentags
 let g:gutentags_ctags_tagfile='.tags'
@@ -273,7 +277,7 @@ lua << EOF
   require("nvim-tree").setup({
     sort_by = "case_sensitive",
     view = {
-      width = 40,
+      width = 50,
     },
     renderer = {
       group_empty = true,
@@ -285,5 +289,14 @@ lua << EOF
 
   -- open the tree
   require("nvim-tree.api").tree.open()
+
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
+      enable = true,
+    },
+  }
 
 EOF
