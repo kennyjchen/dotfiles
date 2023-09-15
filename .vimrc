@@ -39,7 +39,7 @@ call plug#end()
 filetype plugin on
 filetype indent on
 set autoread
-set so=10
+set so=1
 set wildmode=longest:full,full
 set wildmenu
 set backspace=eol,start,indent
@@ -176,13 +176,15 @@ set expandtab
 set smarttab
 set ai
 set si
-set nowrap
+set wrap
+set linebreak
 set colorcolumn=120
 set sidescroll=1
-set sidescrolloff=5
+set sidescrolloff=10
 set breakindent
-set breakindentopt=sbr
-let &showbreak = '↪>  '
+set breakindentopt=shift:2
+"set breakindentopt=sbr
+let &showbreak = '↪> '
 setl cino+=(0 " for function arg alignment
 
 autocmd Filetype json
@@ -221,7 +223,7 @@ command! -nargs=* W w
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=50
+let g:tagbar_width=75
 let g:tagbar_singleclick=1
 let g:tagbar_wrap=1
 let g:tagbar_ignore_anonymous = 1
