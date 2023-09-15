@@ -28,6 +28,76 @@ alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
 
+mkvideo() {
+  ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf $3 $4
+}
+
+mkgif() {
+  ffmpeg -i $1 -filter_complex "fps=30,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" $2
+}
+
+halfgif() {
+  ffmpeg -i $1 -vf "scale=iw/2:ih/2" $2
+}
+
+# ros stuff
+source /opt/ros/noetic/setup.bash
+source /home/kjchen/Software/Workspaces/main/devel/setup.bash
+export ROS_MASTER_URI=http://localhost:11311
+
+alias dlo='roslaunch direct_lidar_odometry dlo.launch rviz:=true'
+alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
+alias dliom='roslaunch direct_lidar_inertial_odometry_and_mapping dliom.launch rviz:=true'
+
+alias magicroute='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
+alias magicrouterm='sudo route del -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.5'
+alias magicroute2='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.4'
+alias magicroute2rm='sudo route del -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.4'
+alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
+alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
+
+alias cc='catkin clean --this'
+alias cca='catkin clean'
+alias cb='catkin build --this'
+alias cba='catkin build'
+alias sws='source devel/setup.bash'
+
+savemap() {
+  rosservice call /robot/dliom_map/save_pcd $1 /home/kjchen/Downloads
+}
+
+rbp() {
+  if [[ "$1" == "aquila1" ]]; then
+    rosbag play $2 /aquila1/os_cloud_node/points:=/robot/lidar /aquila1/mpu6050/imu:=/robot/imu $3
+  elif [[ "$1" == "aquila2" ]]; then
+    rosbag play $2 /aquila2/os_cloud_node/points:=/robot/lidar /aquila2/os_cloud_node/imu:=/robot/imu $3
+  elif [[ "$1" == "liosam" ]]; then
+    rosbag play $2 /points_raw:=/robot/lidar /imu_correct:=/robot/imu $3
+  elif [[ "$1" == "kitti" ]]; then
+    rosbag play $2 /kitti/velo/pointcloud:=/robot/lidar /kitti/oxts/imu:=/robot/imu $3
+  elif [[ "$1" == "newer2020" ]]; then
+    rosbag play $2 /os1_cloud_node/points:=/robot/lidar /os1_cloud_node/imu:=/robot/imu $3
+  elif [[ "$1" == "newer2021" ]]; then
+    rosbag play $2 /os_cloud_node/points:=/robot/lidar /alphasense_driver_ros/imu:=/robot/imu $3
+  elif [[ "$1" == "hilti" ]]; then
+    rosbag play $2 /hesai/pandar:=/robot/lidar /alphasense/imu:=/robot/imu $3
+  fi
+}
+
+# miniconda
+__conda_setup="$('/home/kjchen/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/kjchen/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/kjchen/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/kjchen/.miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+
 # cargo 
 export PATH=$PATH:~/.cargo/bin/
 
@@ -46,49 +116,3 @@ eval "$(pyenv virtualenv-init -)"
 # pyenv-virtualenvwrapper
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 eval "$(pyenv virtualenvwrapper -)"
-
-# asdf
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-
-# direnv
-eval "$(direnv hook bash)"
-
-# Added by exynai-docker-tools install script on Tue Sep  5 07:27:11 PM EDT 2023
-export PATH=$PATH:"/home/kjchen/.exyn/exynai-docker-tools/bin"
-source "/home/kjchen/.exyn/exynai-docker-tools/lib/exdock-completion.bash"
-export EXDOCK_DEFAULT_PROFILE="jammy"
-
-# exyn environment variables
-export EXYN_SANDBOX=1
-export EXYN_NET_LOCAL_IF_NAME=wlp0s20f3
-export EXYN_LOG_DIR=~/xfiles/
-
-# exbuild
-export EXYN_FF_EXBUILD_NINJA=1
-export EXYN_FF_EXBUILD_CCACHE=1
-export EXYN_FF_EXBUILD_MOLD=1
-
-# Added by exworkspace install script on Wed Sep  6 10:01:24 AM EDT 2023
-eval $("/home/kjchen/.exyn/exworkspace/bin/exworkspace" --shellenv)
-
-# Type "ew" to set workspace to most recent, then cd to the source directory
-function ew() {
-    if [[ -f ~/.exyn/latest_workspace && -n "$(cat ~/.exyn/latest_workspace)" ]]; then
-        export EXYN_SANDBOX=1 # disable remote comms
-        source $(cat ~/.exyn/latest_workspace)/setup.bash
-        exworkspace # cd's to the latest
-    fi
-}
-
-# Type "eb" to set workspace to most recent, then cd to the build directory
-function eb() {
-    if [[ -f ~/.exyn/latest_workspace && -n "$(cat ~/.exyn/latest_workspace)" ]]; then
-        ew
-        mkdir -p $EXYN_BUILD/exyn
-        cd $EXYN_BUILD/exyn
-    fi
-}
-
-# mount s3
-alias mnts3='goofys -o ro --endpoint https://s3.us-gov-east-1.amazonaws.com stimpy-logs ~/s3'
