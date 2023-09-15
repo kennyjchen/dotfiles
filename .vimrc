@@ -18,21 +18,19 @@ Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'plasticboy/vim-markdown'
 Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/sonokai'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -196,11 +194,6 @@ nnoremap K <PageUp>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" Minimap
-let g:minimap_width = 10
-let g:minimap_auto_start = 1
-let g:minimap_auto_start_win_enter = 1
-
 " Gitgutter always show sign column
 set signcolumn=yes
 
@@ -243,15 +236,9 @@ let g:cpp_attributes_highlight=1
 let g:cpp_member_highlight=1
 let g:cpp_simple_highlight=1
 
-" NERDTree Config
-let g:NERDTreeWinSize=40
-let NERDTreeMouseMode=3
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Nvim
+map <C-n> :NvimTreeToggle<CR>
+
 " Coc.nvim
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -272,3 +259,31 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Remove tab completion and instead use Ctrl-j to accept completion
 imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+
+lua << EOF
+
+  -- disable netrw at the very start of your init.lua
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+  -- set termguicolors to enable highlight groups
+  vim.opt.termguicolors = true
+
+  -- empty setup using defaults
+  require("nvim-tree").setup({
+    sort_by = "case_sensitive",
+    view = {
+      width = 40,
+    },
+    renderer = {
+      group_empty = true,
+    },
+    filters = {
+      dotfiles = true,
+    },
+  })
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+
+EOF
