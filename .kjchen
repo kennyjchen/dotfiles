@@ -5,8 +5,8 @@ git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
 # Apt
-sudo apt install -y vim neovim tmux git curl npm htop neofetch ffmpeg
-sudo apt install -y ranger
+sudo apt install -y vim tmux git curl npm htop neofetch ffmpeg
+sudo apt install -y cargo universal-ctags vlc
 sudo apt install -y python3-pip python3-catkin-tools autoconf
 sudo apt install -y fonts-firacode
 
@@ -15,6 +15,10 @@ pip3 install conan
 
 # Snap
 sudo snap install btop
+sudo snap install nvim --classic
+
+# Cargo
+cargo install --locked code-minimap
 
 # Neovim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
@@ -34,27 +38,11 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 sudo apt update
 sudo apt install -y sublime-text
 
-# VLC
-sudo apt install -y vlc
-
 # ROS
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 sudo apt update
 sudo apt install -y ros-noetic-desktop-full
-
-# Install ThirdParty Software
-mkdir ~/Software/
-mkdir ~/Software/ThirdParty/
-cd ~/Software/ThirdParty
-
-# Universal Ctags
-git clone https://github.com/universal-ctags/ctags.git
-cd ./ctags
-./autogen.sh
-./configure --prefix=$HOME/.local
-make
-make install
 
 # virtualenv
 pip3 install virtualenv 

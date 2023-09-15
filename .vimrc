@@ -8,22 +8,23 @@ call plug#begin('~/.vim/vim-plug')
 Plug 'airblade/vim-gitgutter'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'plasticboy/vim-markdown'
 Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'qpkorr/vim-bufkill'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/sonokai'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
@@ -174,14 +175,18 @@ set expandtab
 set smarttab
 set ai
 set si
-set wrap
+set nowrap
 set colorcolumn=120
 set sidescroll=1
-set sidescrolloff=50
+set sidescrolloff=5
 set breakindent
 set breakindentopt=sbr
 let &showbreak = '↪>  '
 setl cino+=(0 " for function arg alignment
+
+autocmd Filetype json
+  \ let g:indentLine_setConceal = 0 |
+  \ let g:vim_json_syntax_conceal = 0
 
 " Navigation
 nnoremap J <PageDown>
@@ -215,7 +220,11 @@ command! -nargs=* W w
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=35
+let g:tagbar_width=40
+
+" Gutentags
+let g:gutentags_ctags_tagfile='.tags'
+set tags=./tags,tags;$HOME
 
 " Buffer Navigation
 nnoremap <Tab> :bnext<CR>
@@ -227,14 +236,8 @@ let g:cpp_attributes_highlight=1
 let g:cpp_member_highlight=1
 let g:cpp_simple_highlight=1
 
-" NERDTree Config
-let g:NERDTreeWinSize=35
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Nvim
+map <C-n> :NvimTreeToggle<CR>
 
 " Coc.nvim
 function! s:check_back_space() abort
@@ -249,7 +252,38 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
+command! -nargs=0 Format :call CocActionAsync('format')
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 " Github Copilot
 " Remove tab completion and instead use Ctrl-j to accept completion
 imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+
+lua << EOF
+
+  -- disable netrw at the very start of your init.lua
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+  -- set termguicolors to enable highlight groups
+  vim.opt.termguicolors = true
+
+  -- empty setup using defaults
+  require("nvim-tree").setup({
+    sort_by = "case_sensitive",
+    view = {
+      width = 40,
+    },
+    renderer = {
+      group_empty = true,
+    },
+    filters = {
+      dotfiles = true,
+    },
+  })
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+
+EOF
