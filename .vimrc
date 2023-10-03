@@ -124,12 +124,7 @@ if has("autocmd")
     \ endif |
   au VimLeave * silent execute '!echo -ne "\e[ q"' |
 endif
-if has("clipboard")
-  set clipboard=unnamed
-  if has("unnamedplus")
-    set clipboard+=unnamedplus
-  endif
-endif
+set clipboard+=unnamedplus
 set number relativenumber
 augroup numbertoggle
   autocmd!
@@ -246,6 +241,8 @@ let g:cpp_simple_highlight=1
 map <C-n> :NvimTreeToggle<CR>
 
 " Coc.nvim
+"autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+"set keywordprg=:call\ <SID>show_documentation()
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
