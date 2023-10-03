@@ -218,7 +218,7 @@ command! -nargs=* W w
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=75
+let g:tagbar_width=60
 let g:tagbar_singleclick=1
 let g:tagbar_wrap=1
 let g:tagbar_ignore_anonymous = 1
