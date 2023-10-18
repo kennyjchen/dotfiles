@@ -28,6 +28,15 @@ alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
 
+# exyn aliases
+exv() {
+  exview exview/All.yaml platforms/Robot$1.yaml
+}
+
+exa() {
+  exagent rerun/RerunSuperOdom.yaml -D"log: $2" platforms/Robot$1.yaml
+}
+
 # cargo 
 export PATH=$PATH:~/.cargo/bin/
 
@@ -92,3 +101,4 @@ function eb() {
 
 # mount s3
 alias mnts3='goofys -o ro --endpoint https://s3.us-gov-east-1.amazonaws.com stimpy-logs ~/s3'
+

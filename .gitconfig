@@ -9,31 +9,12 @@
 	ui = auto
 [alias]
 	# Shortening aliases
-	a = add
-	aa = add --all
-	ap = add -p
-	b = branch
-	ba = branch -a
-	bd = branch -d
-	bdo = !git push origin --delete $1
-	c = commit
-	cm = commit -m
-	co = checkout
-	cob = checkout -b
-	d = diff
-	dc = diff --cached
-	f = fetch
-	fp = fetch -p
-	pl = pull
-	ps = push
-	rh = reset --hard
-	st = status -sb
-	sw = switch
+	cp = "!f() { git commit -m \"$1\" && git pull --rebase && git push; }; f"
 
 	# Feature improving aliases
-	acp = !git add --all && git commit -m \"$1\" && git push && :
 	rank = shortlog -sn --no-merges
-	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+	untracked = status --short --untracked-files
+	aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 	# Log
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
