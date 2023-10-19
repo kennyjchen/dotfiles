@@ -9,7 +9,14 @@
 	ui = auto
 [alias]
 	# Shortening aliases
+  aa = add --all
+  ap = add --patch
 	cp = "!f() { git commit -m \"$1\" && git pull --rebase && git push; }; f"
+	d = diff
+  df = diff --cached
+	st = status -sb
+	rv = remote -v
+  rh = reset --hard
 
 	# Feature improving aliases
 	rank = shortlog -sn --no-merges
