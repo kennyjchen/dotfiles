@@ -13,7 +13,7 @@
   ap = add --patch
 	cp = "!f() { git commit -m \"$1\" && git pull --rebase && git push; }; f"
 	d = diff
-  df = diff --cached
+  dc = diff --cached
 	st = status -sb
 	rv = remote -v
   rh = reset --hard
@@ -24,6 +24,6 @@
 	aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 	# Log
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	lga = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+  lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
 
