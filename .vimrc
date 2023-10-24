@@ -215,8 +215,11 @@ nnoremap <C-H> <C-W><C-H>
 " FZF disable :W
 command! -nargs=* W w
 
+" FZF
+nmap <C-b> :Buffers<CR>
+
 " Tagbar
-nmap <C-b> :TagbarToggle<CR>
+nmap <C-g> :TagbarToggle<CR>
 let g:tagbar_sort=0
 let g:tagbar_width=60
 let g:tagbar_singleclick=1
