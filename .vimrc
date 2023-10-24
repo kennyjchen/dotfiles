@@ -277,7 +277,7 @@ lua << EOF
 
   -- empty setup using defaults
   require("nvim-tree").setup({
-    update_focused_file = { enable = true },
+    update_focused_file = { enable = false },
     sort_by = "case_sensitive",
     view = {
       width = 50,
