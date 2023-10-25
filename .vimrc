@@ -158,6 +158,7 @@ let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -165,8 +166,6 @@ let g:airline#extensions#syntastic#enabled=1
 let g:airline_theme='sonokai'
 colorscheme sonokai
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 
 
 " Indentation
