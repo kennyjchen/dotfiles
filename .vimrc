@@ -166,8 +166,6 @@ let g:airline#extensions#syntastic#enabled=1
 let g:airline_theme='sonokai'
 colorscheme sonokai
 
-
-
 " Indentation
 set tabstop=2
 set softtabstop=2
@@ -221,7 +219,10 @@ nnoremap <C-H> <C-W><C-H>
 command! -nargs=* W w
 
 " FZF
-nmap <C-b> :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
+
+" CtrlSpace
+nnoremap <C-Space> :CtrlSpace<CR>
 
 " Tagbar
 nmap <C-g> :TagbarToggle<CR>
