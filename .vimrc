@@ -32,6 +32,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'Yggdroot/indentLine'
 call plug#end()
 
@@ -67,6 +68,7 @@ set conceallevel=0
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 set hidden
+set nocompatible
 
 au CursorHold,CursorHoldI * checktime
 set updatetime=100
@@ -163,6 +165,10 @@ let g:airline#extensions#syntastic#enabled=1
 let g:airline_theme='sonokai'
 colorscheme sonokai
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+
+
 " Indentation
 set tabstop=2
 set softtabstop=2
@@ -234,6 +240,12 @@ set tags=./tags,tags;$HOME
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 nnoremap <leader>x :bp<CR>:bd #<CR>
+
+" Tab Navigation
+ nnoremap <M-l> :tabnext<CR>
+ nnoremap <M-h> :tabprevious<CR>
+ nnoremap <M-n> :tabnew<CR>
+ nnoremap <M-x> :tabclose<CR>
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1
