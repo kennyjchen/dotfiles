@@ -219,16 +219,13 @@ nnoremap <C-H> <C-W><C-H>
 " FZF disable :W
 command! -nargs=* W w
 
-" FZF
-nnoremap <C-b> :Buffers<CR>
-
 " CtrlSpace
 let g:airline#extensions#ctrlspace#enabled = 1
 let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 nnoremap <C-Space> :CtrlSpace<CR>
 
 " Tagbar
-nmap <C-g> :TagbarToggle<CR>
+nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
 let g:tagbar_width=60
 let g:tagbar_singleclick=1
@@ -292,7 +289,7 @@ lua << EOF
 
   -- empty setup using defaults
   require("nvim-tree").setup({
-    update_focused_file = { enable = false },
+    update_focused_file = { enable = true },
     sort_by = "case_sensitive",
     view = {
       width = 50,
