@@ -159,6 +159,7 @@ let g:sonokai_disable_italic_comment=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+"let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -222,6 +223,8 @@ command! -nargs=* W w
 nnoremap <C-b> :Buffers<CR>
 
 " CtrlSpace
+let g:airline#extensions#ctrlspace#enabled = 1
+let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 nnoremap <C-Space> :CtrlSpace<CR>
 
 " Tagbar
@@ -237,15 +240,15 @@ let g:gutentags_ctags_tagfile='.tags'
 set tags=./tags,tags;$HOME
 
 " Buffer Navigation
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-nnoremap <leader>x :bp<CR>:bd #<CR>
+"nnoremap <Tab> :bnext<CR>
+"nnoremap <S-Tab> :bprevious<CR>
+"nnoremap <leader>x :bp<CR>:bd #<CR>
 
 " Tab Navigation
- nnoremap <M-l> :tabnext<CR>
- nnoremap <M-h> :tabprevious<CR>
- nnoremap <M-n> :tabnew<CR>
- nnoremap <M-x> :tabclose<CR>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
+nnoremap <M-n> :tabnew<CR>
+nnoremap <M-x> :tabclose<CR>
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1
