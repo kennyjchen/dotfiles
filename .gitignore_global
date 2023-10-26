@@ -152,3 +152,6 @@ CTestCostData.txt
 *.srctrlbm
 *.srctrldb
 *.srctrlprj
+
+# Gutentags
+.gutctags
