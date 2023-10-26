@@ -62,7 +62,7 @@ set nowb
 set noswapfile
 set encoding=utf-8
 set noshowmode
-set foldmethod=syntax
+set foldmethod=indent
 set nofoldenable
 set conceallevel=0
 set shortmess+=c   " Shut off completion messages
@@ -237,8 +237,8 @@ let g:gutentags_ctags_tagfile='.tags'
 set tags=./tags,tags;$HOME
 
 " Buffer Navigation
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+"nnoremap <Tab> :bnext<CR>
+"nnoremap <S-Tab> :bprevious<CR>
 nnoremap <leader>x :bp<CR>:bd #<CR>
 
 " Tab Navigation
