@@ -239,7 +239,7 @@ set tags=./tags,tags;$HOME
 " Buffer Navigation
 "nnoremap <Tab> :bnext<CR>
 "nnoremap <S-Tab> :bprevious<CR>
-nnoremap <leader>x :bp<CR>:bd #<CR>
+"nnoremap <leader>x :bp<CR>:bd #<CR>
 
 " Tab Navigation
 nnoremap <M-j> :tabprevious<CR>
