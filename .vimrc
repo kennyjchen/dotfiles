@@ -152,7 +152,7 @@ let g:vim_markdown_conceal_code_blocks=0
 autocmd VimEnter * redraw!
 autocmd BufNewFile,BufRead *.launch set syntax=xml
 
-" Color Scheme and Theme
+" Color Scheme and Theme and Airline
 let g:sonokai_style = 'atlantis'
 let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
@@ -160,10 +160,12 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
 let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#syntastic#enabled=1
+let g:airline_section_c = '%t'
 let g:airline_theme='sonokai'
 colorscheme sonokai
 
