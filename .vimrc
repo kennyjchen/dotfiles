@@ -34,6 +34,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'Yggdroot/indentLine'
+Plug 'jackMort/ChatGPT.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " General
@@ -228,6 +232,9 @@ let g:CtrlSpaceUseTabline = 1
 let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 nnoremap <C-Space> :CtrlSpace<CR>
 
+" ChatGPT
+nnoremap <C-c> :ChatGPT<CR>
+
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
@@ -326,5 +333,9 @@ lua << EOF
       enable = true,
     },
   }
+
+  require("chatgpt").setup({
+    api_key_cmd = "cat /home/kjchen/.config/nvim/chatgpt_api_key.txt",
+  })
 
 EOF
