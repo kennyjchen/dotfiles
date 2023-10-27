@@ -102,3 +102,6 @@ function eb() {
 # mount s3
 alias mnts3='goofys -o ro --endpoint https://s3.us-gov-east-1.amazonaws.com stimpy-logs ~/s3'
 
+# fzf ignore build and dotfiles
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden -g "!build/*" -g "!.*/" -g "!.*"'
+

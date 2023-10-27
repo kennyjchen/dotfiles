@@ -249,8 +249,7 @@ set tags=./tags,tags;$HOME
 " Tab Navigation
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
-nnoremap <leader>x :tabclose<CR>
-nnoremap <leader>n :tabnew<CR>
+nnoremap <M-n> :tabnew<CR>
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1
