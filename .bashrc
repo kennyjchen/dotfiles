@@ -28,6 +28,8 @@ alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
 
+alias cdd='cd /mnt/nvme1n1p1/data'
+
 # exyn aliases
 exv() {
   exview exview/All.yaml platforms/Robot$1.yaml

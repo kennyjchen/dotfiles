@@ -175,9 +175,9 @@ let g:airline_theme='sonokai'
 colorscheme sonokai
 
 " Indentation
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 set ai
@@ -188,7 +188,7 @@ set colorcolumn=120
 set sidescroll=1
 set sidescrolloff=10
 set breakindent
-set breakindentopt=shift:2
+set breakindentopt=shift:4
 "set breakindentopt=sbr
 let &showbreak = '↪> '
 setl cino+=(0 " for function arg alignment
@@ -259,7 +259,8 @@ set tags=./tags,tags;$HOME
 " Tab Navigation
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
-nnoremap <M-n> :tabnew<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <leader>x :tabclose<CR>
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1
@@ -324,6 +325,8 @@ lua << EOF
       end
     end
   })
+
+  require("nvim-tree.api").tree.open()
 
   require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
