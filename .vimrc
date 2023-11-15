@@ -261,6 +261,9 @@ nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
 nnoremap <C-t> :tabnew<CR>
 nnoremap <leader>x :tabclose<CR>
+for i in range(1, 9)
+  execute 'nnoremap <M-' . i . '> ' . i . 'gt'
+endfor
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1

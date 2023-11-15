@@ -1,0 +1,51 @@
+alias cdd='cd /mnt/nvme1n1p1/data'
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+
+# direnv
+eval "$(direnv hook bash)"
+
+# Added by exynai-docker-tools install script on Tue Sep  5 07:27:11 PM EDT 2023
+export PATH=$PATH:"/home/kjchen/.exyn/exynai-docker-tools/bin"
+source "/home/kjchen/.exyn/exynai-docker-tools/lib/exdock-completion.bash"
+export EXDOCK_DEFAULT_PROFILE="jammy"
+
+# exyn environment variables
+export EXYN_SANDBOX=1
+export EXYN_NET_LOCAL_IF_NAME=wlp0s20f3
+export EXYN_LOG_DIR=~/xfiles/
+
+# exbuild
+export EXYN_FF_EXBUILD_NINJA=1
+export EXYN_FF_EXBUILD_CCACHE=1
+export EXYN_FF_EXBUILD_MOLD=1
+
+# Added by exworkspace install script on Wed Sep  6 10:01:24 AM EDT 2023
+eval $("/home/kjchen/.exyn/exworkspace/bin/exworkspace" --shellenv)
+
+# Type "ew" to set workspace to most recent, then cd to the source directory
+function ew() {
+    if [[ -f ~/.exyn/latest_workspace && -n "$(cat ~/.exyn/latest_workspace)" ]]; then
+        export EXYN_SANDBOX=1 # disable remote comms
+        source $(cat ~/.exyn/latest_workspace)/setup.bash
+        exworkspace # cd's to the latest
+    fi
+}
+
+# Type "eb" to set workspace to most recent, then cd to the build directory
+function eb() {
+    if [[ -f ~/.exyn/latest_workspace && -n "$(cat ~/.exyn/latest_workspace)" ]]; then
+        ew
+        mkdir -p $EXYN_BUILD/exyn
+        cd $EXYN_BUILD/exyn
+    fi
+}
+
+# mount s3
+alias mnts3='goofys -o ro --endpoint https://s3.us-gov-east-1.amazonaws.com stimpy-logs ~/s3'
+
+# fzf ignore build and dotfiles
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden -g "!build/*" -g "!.*/" -g "!.*"'
+
