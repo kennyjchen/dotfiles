@@ -1,6 +1,9 @@
 # default bashrc
 source ~/.bashrc_default
 
+# additional stuff
+source ~/.bashrc_extra
+
 # vim bindings
 set -o vi
 

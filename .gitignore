@@ -4,6 +4,7 @@
 # Include dotfiles
 !.bashrc
 !.bashrc_default
+!.bashrc_extra
 !.font
 !.gitconfig
 !.gitignore

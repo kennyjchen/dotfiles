@@ -144,3 +144,14 @@ dmypy.json
 
 # Clangd
 .clangd
+
+# CMake CTest
+CTestCostData.txt
+
+# Source Control
+*.srctrlbm
+*.srctrldb
+*.srctrlprj
+
+# Gutentags
+.gutctags

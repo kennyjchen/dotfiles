@@ -19,6 +19,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'plasticboy/vim-markdown'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/tagbar'
@@ -31,14 +32,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'Yggdroot/indentLine'
+Plug 'jackMort/ChatGPT.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " General
 filetype plugin on
 filetype indent on
 set autoread
-set so=10
+set so=1
 set wildmode=longest:full,full
 set wildmenu
 set backspace=eol,start,indent
@@ -60,12 +66,13 @@ set nowb
 set noswapfile
 set encoding=utf-8
 set noshowmode
-set foldmethod=syntax
+set foldmethod=indent
 set nofoldenable
 set conceallevel=0
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 set hidden
+set nocompatible
 
 au CursorHold,CursorHoldI * checktime
 set updatetime=100
@@ -123,12 +130,7 @@ if has("autocmd")
     \ endif |
   au VimLeave * silent execute '!echo -ne "\e[ q"' |
 endif
-if has("clipboard")
-  set clipboard=unnamed
-  if has("unnamedplus")
-    set clipboard+=unnamedplus
-  endif
-endif
+set clipboard+=unnamedplus
 set number relativenumber
 augroup numbertoggle
   autocmd!
@@ -154,34 +156,41 @@ let g:vim_markdown_conceal_code_blocks=0
 autocmd VimEnter * redraw!
 autocmd BufNewFile,BufRead *.launch set syntax=xml
 
-" Color Scheme and Theme
-let g:sonokai_style = 'default'
+" Color Scheme and Theme and Airline
+let g:sonokai_style = 'atlantis'
 let g:sonokai_enable_italic=1
 let g:sonokai_disable_italic_comment=1
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_buffers=0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#ctrlspace_show_tab_nr = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#syntastic#enabled=1
+let g:airline_section_c = '%t'
 let g:airline_theme='sonokai'
 colorscheme sonokai
 
 " Indentation
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 set ai
 set si
-set nowrap
+set wrap
+set linebreak
 set colorcolumn=120
 set sidescroll=1
-set sidescrolloff=5
+set sidescrolloff=10
 set breakindent
-set breakindentopt=sbr
-let &showbreak = '↪>  '
+set breakindentopt=shift:4
+"set breakindentopt=sbr
+let &showbreak = '↪> '
 setl cino+=(0 " for function arg alignment
 
 autocmd Filetype json
@@ -217,19 +226,44 @@ nnoremap <C-H> <C-W><C-H>
 " FZF disable :W
 command! -nargs=* W w
 
+" CtrlSpace
+let g:airline#extensions#ctrlspace#enabled = 1
+let g:CtrlSpaceUseTabline = 1
+let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
+nnoremap <C-Space> :CtrlSpace<CR>
+
+" ChatGPT
+nnoremap <C-c> :ChatGPT<CR>
+
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=40
+let g:tagbar_width=60
+let g:tagbar_singleclick=1
+let g:tagbar_wrap=1
+let g:tagbar_ignore_anonymous = 1
 
 " Gutentags
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
 let g:gutentags_ctags_tagfile='.tags'
+let g:gutentags_ctags_extra_args = [
+      \ '--tag-relative=yes',
+      \ '--fields=+ailmnS',
+      \ ]
+let g:gutentags_ctags_exclude = ['build']
 set tags=./tags,tags;$HOME
 
-" Buffer Navigation
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-nnoremap <leader>x :bp<CR>:bd #<CR>
+" Tab Navigation
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <leader>x :tabclose<CR>
+for i in range(1, 9)
+  execute 'nnoremap <M-' . i . '> ' . i . 'gt'
+endfor
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1
@@ -240,6 +274,8 @@ let g:cpp_simple_highlight=1
 map <C-n> :NvimTreeToggle<CR>
 
 " Coc.nvim
+"autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+"set keywordprg=:call\ <SID>show_documentation()
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -271,9 +307,10 @@ lua << EOF
 
   -- empty setup using defaults
   require("nvim-tree").setup({
+    update_focused_file = { enable = true },
     sort_by = "case_sensitive",
     view = {
-      width = 40,
+      width = 50,
     },
     renderer = {
       group_empty = true,
@@ -283,7 +320,28 @@ lua << EOF
     },
   })
 
-  -- open the tree
-  require("nvim-tree.api").tree.open()
+  vim.api.nvim_create_autocmd("BufEnter", {
+    nested = true,
+    callback = function()
+      if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+        vim.cmd "quit"
+      end
+    end
+  })
+
+  --- require("nvim-tree.api").tree.open()
+
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
+      enable = true,
+    },
+  }
+
+  require("chatgpt").setup({
+    api_key_cmd = "cat /home/kjchen/.config/nvim/chatgpt_api_key.txt",
+  })
 
 EOF
