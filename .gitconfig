@@ -9,21 +9,21 @@
 	ui = auto
 [alias]
 	# Shortening aliases
-  aa = add --all
-  ap = add --patch
+    aa = add --all
+    ap = add --patch
 	cp = "!f() { git commit -m \"$1\" && git pull --rebase && git push; }; f"
 	d = diff
-  dc = diff --cached
+    dc = diff --cached
 	st = status -sb
 	rv = remote -v
-  rh = reset --hard
+    rh = reset --hard
 
 	# Feature improving aliases
 	rank = shortlog -sn --no-merges
-	untracked = status --short --untracked-files
-	aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    untracked = status --short --untracked-files
+    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 	# Log
-  lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
-  lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+    lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+    lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
 
