@@ -140,6 +140,9 @@ augroup END
 set cursorline
 set background=dark
 set laststatus=2
+aunmenu PopUp.How-to\ disable\ mouse
+aunmenu PopUp.-1-
+
 
 if has('termguicolors')
   let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
