@@ -25,11 +25,13 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 alias sb='source ~/.bashrc'
 alias vb='nvim ~/.bashrc'
+alias vbe='nvim ~/.bashrc_extra'
 alias vv='nvim ~/.vimrc'
 alias vt='nvim ~/.tmux.conf'
 alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
+alias cdlast='cd "$(ls -d */ | tail -n 1)"'
 
 # cargo 
 export PATH=$PATH:~/.cargo/bin/
