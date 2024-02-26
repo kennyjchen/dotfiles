@@ -25,11 +25,13 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 alias sb='source ~/.bashrc'
 alias vb='nvim ~/.bashrc'
+alias vbe='nvim ~/.bashrc_extra'
 alias vv='nvim ~/.vimrc'
 alias vt='nvim ~/.tmux.conf'
 alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
+alias cdlast='cd "$(ls -d */ | tail -n 1)"'
 
 mkvideo() {
   ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf $3 $4
