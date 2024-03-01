@@ -34,10 +34,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'Yggdroot/indentLine'
-Plug 'jackMort/ChatGPT.nvim'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " General
@@ -345,9 +341,5 @@ lua << EOF
       enable = true,
     },
   }
-
-  require("chatgpt").setup({
-    api_key_cmd = "cat /home/kjchen/.config/nvim/chatgpt_api_key.txt",
-  })
 
 EOF
