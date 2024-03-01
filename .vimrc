@@ -331,7 +331,7 @@ lua << EOF
     end
   })
 
-  --- require("nvim-tree.api").tree.open()
+  require("nvim-tree.api").tree.open()
 
   require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
