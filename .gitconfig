@@ -2,7 +2,7 @@
 	name = Kenny Chen
 	email = kennyjchen@ucla.edu
 	username = kennyjchen
-    	signingKey = 89D26BECC9B44BEE
+    signingKey = 89D26BECC9B44BEE
 
 [core]
 	editor = nvim
@@ -19,12 +19,12 @@
 
 	# Feature improving aliases
 	rank = shortlog -sn --no-merges
-    	untracked = status --short --untracked-files
-    	aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    untracked = status --short --untracked-files
+    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 	# Log
-    	lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
-    	lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+    lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+    lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
 
 	# Shortening aliases
 	c = checkout
@@ -60,3 +60,6 @@
 	log5 = log -n 5
 	log10 = log -n 10
 	files = ls-tree -r --name-only HEAD
+
+[push]
+	default = simple
