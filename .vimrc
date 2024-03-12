@@ -174,9 +174,9 @@ let g:airline_theme='sonokai'
 colorscheme sonokai
 
 " Indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
 set ai
@@ -231,16 +231,14 @@ let g:CtrlSpaceUseTabline = 1
 let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 nnoremap <C-Space> :CtrlSpace<CR>
 
-" ChatGPT
-nnoremap <C-c> :ChatGPT<CR>
-
 " Tagbar
 nmap <C-b> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=60
+let g:tagbar_width=50
 let g:tagbar_singleclick=1
 let g:tagbar_wrap=1
 let g:tagbar_ignore_anonymous = 1
+autocmd FileType python,c,cpp TagbarOpen
 
 " Gutentags
 let g:gutentags_generate_on_new = 1
@@ -258,11 +256,18 @@ set tags=./tags,tags;$HOME
 " Tab Navigation
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
-nnoremap <C-t> :tabnew<CR>
 nnoremap <leader>x :tabclose<CR>
 for i in range(1, 9)
   execute 'nnoremap <M-' . i . '> ' . i . 'gt'
 endfor
+
+function! OpenTagbarAndNvimTreeInNewTab()
+    tabnew
+    TagbarOpen
+    NvimTreeOpen
+endfunction
+
+nnoremap <C-t> :call OpenTagbarAndNvimTreeInNewTab()<CR>
 
 " C++ Highlighting
 let g:cpp_attributes_highlight=1
@@ -312,7 +317,7 @@ lua << EOF
     update_focused_file = { enable = true },
     sort_by = "case_sensitive",
     view = {
-      width = 50,
+      width = 40,
     },
     renderer = {
       group_empty = true,
