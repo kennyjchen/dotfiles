@@ -232,7 +232,7 @@ let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
 nnoremap <C-Space> :CtrlSpace<CR>
 
 " Tagbar
-nmap <C-b> :TagbarToggle<CR>
+nmap <C-n> :TagbarToggle<CR>
 let g:tagbar_sort=0
 let g:tagbar_width=50
 let g:tagbar_singleclick=1
@@ -274,8 +274,11 @@ let g:cpp_attributes_highlight=1
 let g:cpp_member_highlight=1
 let g:cpp_simple_highlight=1
 
-" Nvim
-map <C-n> :NvimTreeToggle<CR>
+" NvimTree
+map <C-b> :NvimTreeToggle<CR>
+autocmd VimEnter * NvimTreeOpen | wincmd p
+let g:nvim_tree_auto_close=1
+
 
 " Coc.nvim
 "autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
@@ -344,6 +347,10 @@ lua << EOF
     auto_install = true,
     highlight = {
       enable = true,
+      disable = { "markdown" },
+    },
+    indent = {
+      enable = true
     },
   }
 
