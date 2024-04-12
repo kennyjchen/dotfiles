@@ -234,9 +234,9 @@ nnoremap <C-Space> :CtrlSpace<CR>
 " Tagbar
 nmap <C-n> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=50
+let g:tagbar_width=35
 let g:tagbar_singleclick=1
-let g:tagbar_wrap=1
+let g:tagbar_wrap=0
 let g:tagbar_ignore_anonymous = 1
 autocmd FileType python,c,cpp TagbarOpen
 
@@ -277,7 +277,6 @@ let g:cpp_simple_highlight=1
 " NvimTree
 map <C-b> :NvimTreeToggle<CR>
 autocmd VimEnter * NvimTreeOpen | wincmd p
-let g:nvim_tree_auto_close=1
 
 
 " Coc.nvim
@@ -317,7 +316,7 @@ lua << EOF
 
   -- empty setup using defaults
   require("nvim-tree").setup({
-    update_focused_file = { enable = true },
+    update_focused_file = { enable = false },
     sort_by = "case_sensitive",
     view = {
       width = 40,
