@@ -13,11 +13,13 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
+Plug 'jakemason/ouroboros'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'plasticboy/vim-markdown'
@@ -139,6 +141,7 @@ set laststatus=2
 aunmenu PopUp.How-to\ disable\ mouse
 aunmenu PopUp.-1-
 
+autocmd! Filetype c,cpp map<buffer> <C-e> :Ouroboros<CR>
 
 if has('termguicolors')
   let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
@@ -319,7 +322,7 @@ lua << EOF
     update_focused_file = { enable = false },
     sort_by = "case_sensitive",
     view = {
-      width = 35,
+      width = 40,
     },
     renderer = {
       group_empty = true,
