@@ -237,7 +237,7 @@ nnoremap <C-Space> :CtrlSpace<CR>
 " Tagbar
 nmap <C-n> :TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_width=40
+let g:tagbar_width=35
 let g:tagbar_singleclick=1
 let g:tagbar_wrap=0
 let g:tagbar_ignore_anonymous = 1
@@ -319,7 +319,7 @@ lua << EOF
 
   -- empty setup using defaults
   require("nvim-tree").setup({
-    update_focused_file = { enable = false },
+    update_focused_file = { enable = true },
     sort_by = "case_sensitive",
     view = {
       width = 40,
