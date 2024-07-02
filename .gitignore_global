@@ -155,3 +155,5 @@ CTestCostData.txt
 
 # Gutentags
 .gutctags
+.tags.lock
+.tags.temp
