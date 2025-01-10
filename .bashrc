@@ -20,6 +20,10 @@ then
     stty -ixon
 fi 
 
+# Nvidia
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
 # bash aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
@@ -32,6 +36,9 @@ alias saud='sudo apt update'
 alias saug='sudo apt dist-upgrade'
 alias saar='sudo apt autoremove'
 alias cdlast='cd "$(ls -d */ | tail -n 1)"'
+
+alias vtune="source /opt/intel/oneapi/setvars.sh && vtune-gui"
+alias cloudcompare="prime-run flatpak run org.cloudcompare.CloudCompare"
 
 mkvideo() {
   ffmpeg -i $1 -filter:v "setpts=PTS/$2" -vcodec libx264 -crf $3 $4
@@ -60,6 +67,8 @@ alias magicroute2='sudo route add -net 192.168.2.0 netmask 255.255.255.0 gw 192.
 alias magicroute2rm='sudo route del -net 192.168.2.0 netmask 255.255.255.0 gw 192.168.1.4'
 alias rosmaster_aquila='export ROS_MASTER_URI=http://192.168.2.1:11311 && export ROS_IP=192.168.1.101'
 alias rosmaster_local='export ROS_MASTER_URI=http://localhost:11311'
+alias use_sim_time="rosparam set use_sim_time true"
+alias plotjuggler="rosrun plotjuggler plotjuggler"
 
 alias cc='catkin clean --this'
 alias cca='catkin clean'
