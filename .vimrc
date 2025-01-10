@@ -13,6 +13,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'github/copilot.vim'
 Plug 'godlygeek/tabular'
 Plug 'gruvbox-community/gruvbox'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jakemason/ouroboros'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
