@@ -2,7 +2,7 @@
 	name = Kenny Chen
 	email = kennyjchen@ucla.edu
 	username = kennyjchen
-    signingKey = 89D26BECC9B44BEE
+  signingKey = 89D26BECC9B44BEE
 
 [core]
 	editor = nvim

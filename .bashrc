@@ -3,6 +3,7 @@ source ~/.bashrc_default
 
 # additional stuff
 source ~/.bashrc_extra
+source ~/.bashrc_fieldai
 
 # vim bindings
 set -o vi
