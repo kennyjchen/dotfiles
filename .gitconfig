@@ -1,8 +1,8 @@
 [user]
 	name = Kenny Chen
-	email = kennyjchen@ucla.edu
+	email = kenny@fieldai.com
 	username = kennyjchen
-  signingKey = 89D26BECC9B44BEE
+	signingKey = E8B4B8057951B7879B2B7957FC4C60A0DD2D1989
 
 [core]
 	editor = nvim
