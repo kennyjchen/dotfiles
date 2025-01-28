@@ -76,6 +76,8 @@ alias cb='catkin build --this'
 alias cba='catkin build'
 alias sws='source devel/setup.bash'
 
+alias cdp='cd /home/kjchen/Projects/ros_ws'
+
 savemap() {
   rosservice call /robot/dliom_map/save_pcd $1 /home/kjchen/Downloads
 }
