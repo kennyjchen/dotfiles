@@ -57,6 +57,9 @@ halfgif() {
 source /opt/ros/noetic/setup.bash
 export ROS_MASTER_URI=http://localhost:11311
 
+export ROS_WORKSPACE=~/Projects/ros_ws/src
+source $ROS_WORKSPACE/../devel/setup.bash
+
 alias dlo='roslaunch direct_lidar_odometry dlo.launch rviz:=true'
 alias dlio='roslaunch direct_lidar_inertial_odometry dlio.launch rviz:=true'
 alias dliom='roslaunch direct_lidar_inertial_odometry_and_mapping dliom.launch rviz:=true'
