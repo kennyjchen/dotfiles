@@ -81,6 +81,7 @@ alias sws='source devel/setup.bash'
 
 alias cdp='cd /home/kjchen/Projects/ros_ws'
 alias cdd='cd /home/kjchen/Projects/dev/src/dlio_v2'
+alias cdt='cd /media/kjchen/T9'
 
 savemap() {
   rosservice call /robot/dliom_map/save_pcd $1 /home/kjchen/Downloads
