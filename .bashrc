@@ -80,7 +80,7 @@ alias cba='catkin build'
 alias sws='source devel/setup.bash'
 
 alias cdp='cd /home/kjchen/Projects/ros_ws'
-alias cdd='cd /home/kjchen/Projects/dev/src/dlio_v2'
+alias cdd='cd /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2'
 alias cdt='cd /media/kjchen/T9'
 
 savemap() {
