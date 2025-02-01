@@ -26,6 +26,8 @@ alias vim='nvim'
 alias sb='source ~/.bashrc'
 alias cdlast='cd "$(ls -d */ | tail -n 1)"'
 
+alias cloudcompare='prime-run flatpak run org.cloudcompare.CloudCompare'
+
 # ros stuff
 source /opt/ros/noetic/setup.bash
 export ROS_MASTER_URI=http://localhost:11311
