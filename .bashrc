@@ -2,6 +2,7 @@
 source ~/.bashrc_default
 
 # additional stuff
+source ~/.bashrc_fieldai
 alias sfai='source ~/.bashrc_fieldai'
 
 # vim bindings
