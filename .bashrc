@@ -1,9 +1,14 @@
 # default bashrc
 source ~/.bashrc_default
 
+function svt() {
+    source /opt/intel/oneapi/vtune/latest/env/vars.sh
+}
+
 # additional stuff
 source ~/.bashrc_fieldai
 alias sfai='source ~/.bashrc_fieldai'
+export USE_TRAV_V2=1
 
 # vim bindings
 set -o vi
