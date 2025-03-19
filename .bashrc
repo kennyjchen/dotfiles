@@ -58,6 +58,14 @@ alias cdp='cd /home/kjchen/Projects/ros_ws'
 alias cdd='cd /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2'
 alias cdt='cd /media/kjchen/T9'
 
+function rosmaster() {
+  export ROS_MASTER_URI=http://$1:11311
+}
+
+function roslocal() {
+  export ROS_MASTER_URI=http://localhost:11311
+}
+
 # virtualenv wrapper
 export PATH=~/.local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
