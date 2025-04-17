@@ -38,6 +38,18 @@ alias cdlast='cd "$(ls -d */ | tail -n 1)"'
 
 alias cloudcompare='prime-run flatpak run org.cloudcompare.CloudCompare'
 
+alias download="/home/kjchen/data/scripts/fai_download.sh"
+
+function generate_dlio_report() {
+  if [ -z "$1" ]; then
+    echo "Usage: generate_dlio_report <path_to_dlio>"
+    return 1
+  fi
+
+  local log_path="$1"
+  python3 /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2/scripts/python/generate_dlio_report.py "$log_path" -o "/home/kjchen/Downloads/dlio_report.pdf"
+}
+
 # ros stuff
 source /opt/ros/noetic/setup.bash
 export ROS_MASTER_URI=http://localhost:11311
@@ -57,6 +69,7 @@ alias sws='source devel/setup.bash'
 alias cdp='cd /home/kjchen/Projects/ros_ws'
 alias cdd='cd /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2'
 alias cdt='cd /media/kjchen/T9'
+alias rbp='rosbag play *lidar*.bag *state*.bag'
 
 function rosmaster() {
   export ROS_MASTER_URI=http://$1:11311
