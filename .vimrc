@@ -280,7 +280,7 @@ let g:cpp_simple_highlight=1
 
 " NvimTree
 map <C-b> :NvimTreeToggle<CR>
-autocmd VimEnter * NvimTreeOpen | wincmd p
+" autocmd VimEnter * NvimTreeOpen | wincmd p
 
 
 " Coc.nvim
@@ -319,6 +319,15 @@ lua << EOF
   -- set termguicolors to enable highlight groups
   vim.opt.termguicolors = true
 
+  -- Autocmd to open nvim-tree only when no file is provided
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+      if vim.fn.argc() == 0 then
+        require("nvim-tree.api").tree.open()
+      end
+    end
+  })
+
   -- empty setup using defaults
   require("nvim-tree").setup({
     update_focused_file = { enable = true },
@@ -342,8 +351,6 @@ lua << EOF
       end
     end
   })
-
-  require("nvim-tree.api").tree.open()
 
   require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
