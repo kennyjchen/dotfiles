@@ -1,6 +1,8 @@
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 
+source virtualenvwrapper.sh
+
 # zsh pure
 autoload -U promptinit; promptinit
 prompt pure

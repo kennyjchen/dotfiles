@@ -63,3 +63,11 @@
 
 [push]
 	default = simple
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[include]
+	path = /Users/kjchen/Projects/field-ai/core_environment/shared/dotfiles/.gitconfig
+	path = /home/fieldai/Admin/core_environment/shared/dotfiles/.gitconfig
