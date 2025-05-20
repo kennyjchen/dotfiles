@@ -53,6 +53,7 @@ function generate_dlio_report() {
 # ros stuff
 source /opt/ros/noetic/setup.bash
 export ROS_MASTER_URI=http://localhost:11311
+export DISABLE_ROS1_EOL_WARNINGS=1
 
 export ROS_WORKSPACE=~/Projects/ros_ws/src
 source $ROS_WORKSPACE/../devel/setup.bash
