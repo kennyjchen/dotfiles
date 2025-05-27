@@ -32,6 +32,8 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 # Field AI
 alias fai_download="/home/kjchen/data/scripts/fai_download.sh"
+alias roscd="cd /home/kjchen/field-ai/robot-monorepo"
+alias cdd="cd /home/kjchen/field-ai/dev-docker-setup"
 
 function generate_dlio_report() {
   if [ -z "$1" ]; then
@@ -40,5 +42,5 @@ function generate_dlio_report() {
   fi
 
   local log_path="$1"
-  python3 /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2/scripts/python/generate_dlio_report.py "$log_path" -o "/home/kjchen/Downloads/dlio_report.pdf"
+  python3 /home/kjchen/field-ai/robot-monorepo/dlio_v2/scripts/python/generate_dlio_report.py "$log_path" -o "/home/kjchen/Downloads/dlio_report.pdf"
 }
