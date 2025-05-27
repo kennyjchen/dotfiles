@@ -1,15 +1,6 @@
 # default bashrc
 source ~/.bashrc_default
 
-function svt() {
-    source /opt/intel/oneapi/vtune/latest/env/vars.sh
-}
-
-# additional stuff
-source ~/.bashrc_fieldai
-alias sfai='source ~/.bashrc_fieldai'
-export USE_TRAV_V2=1
-
 # vim bindings
 set -o vi
 
@@ -26,7 +17,7 @@ then
     stty -ixon
 fi 
 
-# Nvidia
+# nvidia
 export __NV_PRIME_RENDER_OFFLOAD=1
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
@@ -36,9 +27,15 @@ alias vim='nvim'
 alias sb='source ~/.bashrc'
 alias cdlast='cd "$(ls -d */ | tail -n 1)"'
 
-alias cloudcompare='prime-run flatpak run org.cloudcompare.CloudCompare'
+# virtualenv
+export PATH=~/.local/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
 
-alias download="/home/kjchen/data/scripts/fai_download.sh"
+# Field AI
+alias fai_download="/home/kjchen/data/scripts/fai_download.sh"
 
 function generate_dlio_report() {
   if [ -z "$1" ]; then
@@ -49,49 +46,3 @@ function generate_dlio_report() {
   local log_path="$1"
   python3 /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2/scripts/python/generate_dlio_report.py "$log_path" -o "/home/kjchen/Downloads/dlio_report.pdf"
 }
-
-# ros stuff
-source /opt/ros/noetic/setup.bash
-export ROS_MASTER_URI=http://localhost:11311
-export DISABLE_ROS1_EOL_WARNINGS=1
-
-export ROS_WORKSPACE=~/Projects/ros_ws/src
-source $ROS_WORKSPACE/../devel/setup.bash
-
-alias use_sim_time="rosparam set use_sim_time true"
-alias plotjuggler="rosrun plotjuggler plotjuggler"
-
-alias cc='catkin clean --this'
-alias cca='catkin clean'
-alias cb='catkin build --this'
-alias cba='catkin build'
-alias sws='source devel/setup.bash'
-
-alias cdp='cd /home/kjchen/Projects/ros_ws'
-alias cdd='cd /home/kjchen/Projects/ros_ws/src/robot-monorepo/dlio_v2'
-alias cdt='cd /media/kjchen/T9'
-alias rbp='rosbag play *lidar*.bag *state*.bag'
-
-function rosmaster() {
-  export ROS_MASTER_URI=http://$1:11311
-}
-
-function roslocal() {
-  export ROS_MASTER_URI=http://localhost:11311
-}
-
-# virtualenv wrapper
-export PATH=~/.local/bin:$PATH
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Software/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source ~/.local/bin/virtualenvwrapper.sh
-
-# pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# pyenv-virtualenvwrapper
-export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-eval "$(pyenv virtualenvwrapper -)"
