@@ -32,7 +32,7 @@ export PATH=~/.local/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source ~/.local/bin/virtualenvwrapper.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 # Field AI
 alias fai_download="/home/kjchen/data/scripts/fai_download.sh"
