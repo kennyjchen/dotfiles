@@ -6,8 +6,9 @@ git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 
 # apt
 sudo apt install -y build-essential git git-lfs
-sudo apt install -y curl htop neofetch npm simplescreenrecorder tmux universal-ctags xclip
+sudo apt install -y curl htop neofetch npm ripgrep tmux universal-ctags xclip
 sudo apt install -y python3-pip python3-virtualenv python3-virtualenvwrapper
+sudo apt install -y simplescreenrecorder
 
 # snap
 sudo snap install --classic aws-cli 
@@ -31,7 +32,7 @@ curl -fsSL https://tailscale.com/install.sh | sh
 # neovim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 
-# tmux Plugin Manager
+# tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # nodejs
