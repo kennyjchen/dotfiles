@@ -1,64 +1,41 @@
 #!/bin/sh
 
-# Set up dotfiles
+# setup dotfiles
 git clone --bare git@github.com:kennyjchen/dotfiles.git $HOME/.dotfiles
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 
-# Apt
-sudo apt install -y vim tmux git curl npm htop neofetch ffmpeg xclip
-sudo apt install -y universal-ctags
-sudo apt install -y python3-pip python3-catkin-tools autoconf
-sudo apt install -y fonts-firacode
+# apt
+sudo apt install -y build-essential git git-lfs
+sudo apt install -y clang-format curl htop neofetch npm ripgrep tmux universal-ctags xclip
+sudo apt install -y python3-pip python3-virtualenv python3-virtualenvwrapper
+sudo apt install -y simplescreenrecorder
 
-# Snap
-sudo snap install sublime-text --classic
-sudo snap install gitkraken --classic
-sudo snap install nvim --classic
-snap install zotero-snap
-snap install slack
-snap install foxglove-studio
-snap install vlc
+# snap
+sudo snap install --classic aws-cli 
+sudo snap install --classic code
+sudo snap install --classic gitkraken
+sudo snap install --classic nvim
+sudo snap install --classic obsidian
+sudo snap install --classic sublime-text
+sudo snap install --classic tmux 
 
-# Conan
-pip3 install conan
+sudo snap install ffmpeg
+sudo snap install foxglove-studio
+sudo snap install slack
+sudo snap install universal-ctags
+sudo snap install vlc
+sudo snap install zotero-snap
 
-# Neovim
+# tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+
+# neovim
 ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 
-# NodeJS
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# nodejs
 sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
-
-# Tmux Plugin Manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# ROS
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo apt update
-sudo apt install -y ros-noetic-desktop-full
-
-# virtualenv
-pip3 install virtualenv
-
-# virtualenvwrapper
-pip3 install virtualenvwrapper
-
-# pyenv
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-cd ~/.pyenv && src/configure && make -C src
-
-# pyenv-virtualenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-
-# pyenv-virtualenvwrapper
-git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
-
-# Coc
-# {
-#  "inlayHint.enable": false,
-#  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
-#  "clangd.arguments": ["--fallback-style=none"],
-#  "clangd.fallbackFlags": ["--fallback-style=none"]
-# }

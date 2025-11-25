@@ -8,9 +8,10 @@
 	editor = nvim
 	excludesFile = ~/.gitignore_global
 	filemode = false
+	sshCommand = ssh -o 'ConnectionAttempts 3'
 
 [commit]
-    	gpgSign = true
+  gpgSign = true
 
 [color]
 	ui = auto
@@ -19,12 +20,12 @@
 
 	# Feature improving aliases
 	rank = shortlog -sn --no-merges
-    untracked = status --short --untracked-files
-    aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  untracked = status --short --untracked-files
+  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 	# Log
-    lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
-    lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+  lg = log --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
+  lga = log --all --graph --color --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(dim white)<%an>%Creset %C(bold yellow)%d%C(reset)'
 
 	# Shortening aliases
 	c = checkout
@@ -63,6 +64,8 @@
 
 [push]
 	default = simple
+[commit]
+	gpgSign = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f

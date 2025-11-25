@@ -253,6 +253,7 @@ let g:gutentags_ctags_tagfile='.tags'
 let g:gutentags_ctags_extra_args = [
       \ '--tag-relative=yes',
       \ '--fields=+ailmnS',
+      \ '--recurse=no',
       \ ]
 let g:gutentags_ctags_exclude = ['build']
 set tags=./tags,tags;$HOME
@@ -333,7 +334,7 @@ lua << EOF
     update_focused_file = { enable = true },
     sort_by = "case_sensitive",
     view = {
-      width = 40,
+      width = 35,
     },
     renderer = {
       group_empty = true,
