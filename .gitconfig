@@ -51,26 +51,16 @@
 	flist = ls-tree -r --name-only HEAD
 	untrack = rm -r --cached
 	ap = apply --ignore-space-change --ignore-whitespace
-	l = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short -10
-	la = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	lb = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --first-parent -10
-	lba = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --first-parent
-	lmy = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --author=Chabanov -10
-	lamy = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --author=Chabanov
-	log3 = log -n 3
-	log5 = log -n 5
-	log10 = log -n 10
-	files = ls-tree -r --name-only HEAD
+  files = ls-tree -r --name-only HEAD
 
 [push]
 	default = simple
+
 [commit]
 	gpgSign = true
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-[include]
-	path = /Users/kjchen/Projects/field-ai/core_environment/shared/dotfiles/.gitconfig
-	path = /home/fieldai/Admin/core_environment/shared/dotfiles/.gitconfig
