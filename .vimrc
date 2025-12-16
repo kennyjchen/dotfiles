@@ -324,46 +324,49 @@ lua << EOF
   vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
       if vim.fn.argc() == 0 then
-        require("nvim-tree.api").tree.open()
+        local status_ok, api = pcall(require, "nvim-tree.api")
+        if status_ok then
+          api.tree.open()
+        end
       end
     end
   })
 
-  -- empty setup using defaults
-  require("nvim-tree").setup({
-    update_focused_file = { enable = true },
-    sort_by = "case_sensitive",
-    view = {
-      width = 35,
-    },
-    renderer = {
-      group_empty = true,
-    },
-    filters = {
-      dotfiles = true,
-    },
-  })
+  local tree_status_ok, nvim_tree = pcall(require, "nvim-tree")
+  if tree_status_ok then
+    nvim_tree.setup({
+      update_focused_file = { enable = true },
+      sort_by = "case_sensitive",
+      view = { width = 35 },
+      renderer = { group_empty = true },
+      filters = { dotfiles = true },
+    })
+  end
 
   vim.api.nvim_create_autocmd("BufEnter", {
     nested = true,
     callback = function()
-      if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+      local status_ok, tree_utils = pcall(require, "nvim-tree.utils")
+      if status_ok and #vim.api.nvim_list_wins() == 1 and tree_utils.is_nvim_tree_buf() then
         vim.cmd "quit"
       end
     end
   })
 
-  require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
-    sync_install = false,
-    auto_install = true,
-    highlight = {
-      enable = true,
-      disable = { "markdown" },
-    },
-    indent = {
-      enable = true
-    },
-  }
+  local ts_status_ok, configs = pcall(require, "nvim-treesitter.configs")
+  if ts_status_ok then
+    configs.setup {
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cpp", "python" },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        disable = { "markdown" },
+      },
+      indent = {
+        enable = true
+      },
+    }
+  end
 
 EOF
